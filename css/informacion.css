@@ -1,0 +1,242 @@
+/* Variables de color */
+:root {
+    --color-primario: #B08968;
+    --color-secundario: #D9C6A5;
+    --color-oscuro: #2C3E50;
+    --color-texto: #000;
+    --color-blanco: #FFF;
+    --color-navbar: #2C3E50; /* Azul oscuro */
+    --color-fondobeneficio: #F2E6D8;
+}
+
+/* Reset de estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--color-oscuro);
+    color: var(--color-blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-blanco);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primario);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--color-primario);
+}
+
+/* Sección Principal */
+.section-principal {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--color-secundario);
+}
+
+.section-principal h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-oscuro);
+}
+
+.section-principal p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+/* Secciones Misión y Visión */
+.section-dual {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--color-primario);
+}
+
+.card {
+    background-color: var(--color-fondobeneficio);
+    color: var(--color-texto);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    width: 45%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Sección Historia */
+.section-historia {
+    background-color: var(--color-oscuro);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 2rem;
+}
+
+.section-historia h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.section-historia p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+/* Miembros */
+.section-miembros .subtitle {
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-bottom: 2rem;
+}
+
+.miembros-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.miembro {
+    background-color: var(--color-primario);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-blanco);
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.miembro img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+}
+
+.miembro p {
+    margin: 0.5rem 0 0.2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.miembro span {
+    font-size: 0.9rem;
+}
+/* Menú de Navegación */
+.navbar {
+    background-color: var(--color-oscuro);
+    color: var(--color-blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-blanco);
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primario);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--color-primario);
+}
+/* Centrar texto de "Miembros" */
+.section-miembros h2,
+.section-miembros .subtitle {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Contenedor de miembros */
+.miembros-container {
+    display: flex;
+    justify-content: center; /* Centra todo horizontalmente */
+    align-items: flex-start; /* Alinea verticalmente arriba */
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Ajuste de cada miembro */
+.miembro {
+    background-color: var(--color-primario);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-blanco);
+    width: 200px; /* Misma anchura */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Redimensionar y alinear imágenes */
+.miembro img {
+    width: 100px; /* Mismo tamaño */
+    height: 100px; /* Mantener un tamaño cuadrado */
+    object-fit: cover; /* Cortar y ajustar las imágenes */
+    border-radius: 50%; /* Forma circular */
+    margin: 0 auto 0.5rem; /* Centrar y dar espacio abajo */
+}
+
+/* Centrar contenedor de "Miembros" */
+.section-miembros {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 1200px; /* Ajustar ancho máximo */
+}
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--color-navbar);
+    color: var(--color-blanco);
+    margin-top: 2rem;
+    font-family: 'Helvetica-Bold';
+}

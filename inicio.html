@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Tyché</title>
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <h1 class="logo">Tyché</h1>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="politicas.html">Políticas de Uso</a></li>
+            <li><a href="manual.html">Manual de Uso</a></li>
+            <li><a href="informacion.html">Acerca de Nosotros</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mensaje de Bienvenida -->
+    <section class="welcome-section">
+        <div class="overlay">
+            <h1>Gracias por ingresar</h1>
+            <div class="user-name-box" id="userNameBox">Usuario</div>
+        </div>
+    </section>
+
+    <!-- Sección de Actividades -->
+    <section class="activities-section">
+        <h2>Revisa tus actividades</h2>
+
+        <!-- Botones para cargar actividades -->
+        <div class="buttons-container">
+            <button id="loadAcademicBtn" class="btn">Cargar actividad académica</button>
+            <button id="loadExtraBtn" class="btn">Cargar actividad extracurricular</button>
+        </div>
+
+        <div class="activities-container">
+            <!-- Actividades Académicas -->
+<div class="activity-box">
+    <h3>Actividades Académicas</h3>
+    <div class="activity-content" id="academicActivities">
+        <!-- Contenido dinámico -->
+    </div>
+    <div class="navigation">
+        <button class="btn" id="prevAcademic">Anterior</button>
+        <button class="btn" id="nextAcademic">Siguiente</button>
+    </div>
+</div>
+
+<!-- Actividades Extracurriculares -->
+<div class="activity-box">
+    <h3>Actividades Extracurriculares</h3>
+    <div class="activity-content" id="extraActivities">
+        <!-- Contenido dinámico -->
+    </div>
+    <div class="navigation">
+        <button class="btn" id="prevExtra">Anterior</button>
+        <button class="btn" id="nextExtra">Siguiente</button>
+    </div>
+</div>
+    </section>
+
+    <!-- Modal -->
+<div id="activityModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <h3 id="modalTitle">Cargar Actividad</h3>
+        <form id="activityForm">
+            <label for="activityName">Nombre de la actividad:</label>
+            <input type="text" id="activityName" required>
+            
+            <label for="activityPoints">Puntos:</label>
+            <input type="number" id="activityPoints" required>
+            
+            <label for="activityStatus">Estado:</label>
+            <select id="activityStatus">
+                <option value="Pendiente">Pendiente</option>
+                <option value="Completado">Completado</option>
+            </select>
+            
+            <button type="submit" class="btn">Guardar</button>
+        </form>        
+    </div>
+</div>
+
+    <script src="js/inicio.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+@font-face {
+    font-family: 'Helvetica';
+    src: local('Helvetica');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: local('Helvetica-Bold');
+    font-weight: bold;
+}
+
+:root {
+    --color-principal: #B08968; 
+    --color-secundario: #D9C6A5; 
+    --color-fondo: rgba(0, 0, 0, 0.6); 
+    --color-texto: #FFFFFF;
+    --color-borde-boton: #774936;
+    --color-fondobeneficio: #F2E6D8; /* Nuevo color secundario */
+       
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', Arial, sans-serif;
+    color: #333;
+    background-color: var(--color-principal); /* Fondo principal */
+    box-sizing: border-box;
+}
+
+/* Ajuste de la imagen de fondo */
+.hero-section {
+    background: url('../png/Foto4.png') no-repeat center center/cover;
+    height: 80vh; /* Reducir el tamaño */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Ajustar tamaño y posición del overlay */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 60%;
+    text-align: center;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-texto);
+    font-weight: bold;
+}
+
+/* Contenedor de Secciones */
+.section-container {
+    background-color: var(--color-secundario);
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 12px;
+    max-width: 900px;
+    color: #333; /* Texto oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}
+
+.section-container h2, .section-container h3 {
+    color: var(--color-principal);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.section-container p {
+    text-align: center; /* Centrar botones */
+    margin-bottom: 1rem;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-secundario);
+    border: 2px solid var(--color-borde-boton);
+    border-radius: 30px;
+    background-color: var(--color-principal);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: var(--color-borde-boton);
+    color: var(--color-texto);
+}
+
+/* Centrar botones en todas las secciones */
+.center-btn {
+    display: block;
+    margin: 1rem auto;
+    text-align: center;
+}
+/* Ajuste de botones para "Beneficios" */
+.beneficios-container .btn {
+    margin: 1rem auto;
+    display: block;
+    text-align: center;
+}
+
+/* Beneficios verticales */
+.beneficios-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.beneficio-box {
+    background-color: var(--color-fondobeneficio);
+    color: #333;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: justify;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.beneficios-container .btn-container {
+    text-align: center; /* Centrar botón en beneficios */
+    margin-top: 1.5rem;
+}
+
+/* Estilos para Modales */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--color-secundario);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-borde-boton);
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 0.7rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+
+.footer {
+    text-align: center;
+    background-color: var(--color-borde-boton);
+    padding: 1rem;
+    color: var(--color-texto);
+}

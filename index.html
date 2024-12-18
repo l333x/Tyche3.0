@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyché - Sistema de Recompensas</title>
+    <link rel="stylesheet" href="css/iniciosistema.css">
+</head>
+<body>
+    <!-- Encabezado Principal -->
+    <section class="hero-section">
+        <div class="overlay">
+            <h1 class="title">TYCHÉ</h1>
+            <p class="subtitle">Transforma tu esfuerzo en recompensas con Tyché</p>
+            <div class="button-container">
+                <a href="#" class="btn" id="openRegisterModal">Registrarse</a>
+                <a href="#" class="btn" id="openLoginModal">Iniciar Sesión</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección "Conozca Tyche" -->
+    <section class="section-container">
+        <h2>Conozca <span class="bold">Tyché</span></h2>
+        <h3>Sistema de Recompensas</h3>
+        <p>
+            Bienvenido a Tyché, una plataforma innovadora diseñada para transformar la experiencia estudiantil. Nuestro sistema de recompensas digitales motiva y reconoce el esfuerzo de los estudiantes, promoviendo la participación en actividades académicas, extracurriculares y de responsabilidad social.
+        </p>
+        <p>
+            Con Tyché, los estudiantes pueden acumular puntos por su desempeño académico, asistencia, y compromiso en eventos que fomentan el bienestar y la sostenibilidad. Estos puntos se convierten en recompensas reales, creando un entorno que inspira superación personal, colaboración y sentido de pertenencia.
+        </p>
+        <a href="informacion.html" class="btn center-btn">Conoce más sobre nosotros</a>
+    </section>
+
+    <!-- Sección "Inicios del Proyecto" -->
+    <section class="section-container">
+        <h2>Inicios del Proyecto</h2>
+        <p>
+            El proyecto Tyché surge como una iniciativa de transformación digital en instituciones educativas, diseñada para fomentar la participación estudiantil y reconocer el esfuerzo académico. Inspirado por la necesidad de motivar a los estudiantes a involucrarse activamente en actividades académicas, extracurriculares y de responsabilidad social, Tyché combina innovación tecnológica con un enfoque en el desarrollo integral.
+        </p>
+        <a href="informacion.html" class="btn center-btn">Conoce más del proyecto</a>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="section-container">
+        <h2>Beneficios</h2>
+        <div class="beneficios-container">
+            <div class="beneficio-box">
+                <h3>01 - Reconocimiento de logros académicos</h3>
+                <p>
+                    Cada logro académico, participación en eventos y contribución a la comunidad te permite acumular puntos que reflejan tu dedicación y compromiso con la vida universitaria.
+                </p>
+            </div>
+            <div class="beneficio-box">
+                <h3>02 - Incentivos personalizados</h3>
+                <p>
+                    Tyché ofrece beneficios diseñados para motivarte y mejorar tu experiencia como estudiante.
+                </p>
+            </div>
+            <div class="beneficio-box">
+                <h3>03 - Fomento de la participación activa y el compromiso social</h3>
+                <p>
+                    Impulsa a participar en actividades académicas, extracurriculares y sostenibles que contribuyen al bienestar colectivo y al desarrollo personal.
+                </p>
+            </div>
+        </div>
+        <a href="#" id="registerBtnCentered" class="btn center-btn">Regístrate ahora</a>
+    </section>
+
+   <!-- Modales -->
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegisterModal">&times;</span>
+            <h2>Registrarse</h2>
+            <form id="registerForm">
+                <label for="cedula">Cédula:</label>
+                <input type="text" id="cedula" required>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" required>
+
+                <label for="carrera">Carrera:</label>
+                <input type="text" id="carrera" required>
+
+                <button type="submit" class="btn">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Inicio de Sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLoginModal">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <label for="loginCedula">Cédula:</label>
+                <input type="text" id="loginCedula" required>
+
+                <button type="submit" class="btn">Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/iniciosistema.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Tyché. ¡Transforma tu esfuerzo en recompensas con Tyché!</p>
+    </footer>
+</body>
+</html>

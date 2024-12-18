@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'Helvetica';
+    src: local('Helvetica');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica-Bold';
+    src: local('Helvetica-Bold');
+    font-weight: bold;
+}
+
+:root {
+    --color-fondo: #F5E6CC; /* Beige claro */
+    --color-texto: #2C3E50; /* Azul oscuro */
+    --color-titulo: #A67542; /* Marrón principal */
+    --color-navbar: #2C3E50; /* Azul oscuro (navbar) */
+    --color-blanco: #FFFFFF;
+    --color-card-fondo: #D9C2A6; /* Beige intermedio */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* Encabezado */
+.header {
+    background-color: var(--color-navbar);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 1.5rem 0;
+    font-family: 'Helvetica-Bold';
+    font-size: 2rem;
+}
+
+/* Sección de Contenido */
+.content {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--color-blanco);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: var(--color-titulo);
+    font-family: 'Helvetica-Bold';
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+h3 {
+    color: var(--color-texto);
+    font-family: 'Helvetica-Bold';
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+p {
+    margin: 1rem 0;
+    text-align: justify;
+}
+
+ul {
+    padding-left: 2rem;
+}
+
+ul li {
+    margin: 0.5rem 0;
+}
+
+span {
+    font-weight: bold;
+    color: var(--color-titulo);
+}
+
+/* Menú de Navegación */
+.navbar {
+    background-color: var(--color-navbar);
+    color: var(--color-blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-blanco);
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-titulo);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--color-titulo);
+}
+
+/* Cartas Misión y Visión */
+.section-dual {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--color-card-fondo);
+}
+
+.card {
+    background-color: var(--color-blanco);
+    color: var(--color-texto);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    width: 45%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: var(--color-titulo);
+    font-size: 1.5rem;
+}
+
+/* Historia */
+.section-historia {
+    background-color: var(--color-navbar);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 2rem;
+}
+
+.section-historia h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-card-fondo);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--color-navbar);
+    color: var(--color-blanco);
+    margin-top: 2rem;
+    font-family: 'Helvetica-Bold';
+}
