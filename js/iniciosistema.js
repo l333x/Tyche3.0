@@ -16,10 +16,10 @@ const usuarios = [
 ];
 
 // Abrir y cerrar modales
-openRegisterBtn.addEventListener("click", () => registerModal.style.display = "flex");
-openLoginBtn.addEventListener("click", () => loginModal.style.display = "flex");
-closeRegisterBtn.addEventListener("click", () => registerModal.style.display = "none");
-closeLoginBtn.addEventListener("click", () => loginModal.style.display = "none");
+openRegisterBtn.addEventListener("click", () => (registerModal.style.display = "flex"));
+openLoginBtn.addEventListener("click", () => (loginModal.style.display = "flex"));
+closeRegisterBtn.addEventListener("click", () => (registerModal.style.display = "none"));
+closeLoginBtn.addEventListener("click", () => (loginModal.style.display = "none"));
 
 // Registro de usuario
 document.getElementById("registerForm").addEventListener("submit", function (e) {
@@ -30,13 +30,13 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
     const apellidos = document.getElementById("apellidos").value.trim();
     const carrera = document.getElementById("carrera").value.trim();
 
-    if (usuarios.length < 5) {
+    if (!usuarios.find(user => user.cedula === cedula)) {
         usuarios.push({ cedula, nombre, apellidos, carrera });
         alert("Usuario registrado correctamente.");
         registerModal.style.display = "none";
         loginModal.style.display = "flex"; // Abre modal de inicio de sesión
     } else {
-        alert("No se pueden registrar más de 5 usuarios.");
+        alert("La cédula ya está registrada.");
     }
 });
 
@@ -48,29 +48,19 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     const usuario = usuarios.find(user => user.cedula === cedula);
 
     if (usuario) {
-        // Guardar el nombre del usuario en sessionStorage
-        sessionStorage.setItem("usuarioNombre", usuario.nombre);
-        sessionStorage.setItem("cedula", usuario.cedula);
-
         alert(`¡Bienvenido, ${usuario.nombre}!`);
-
-        // Redirigir a inicio.html
-        window.location.href = "inicio.html";
+        loginModal.style.display = "none"; // Cerrar modal
+        // Guardar usuario logueado (simulación de sesión)
+        sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
     } else {
         alert("Cédula incorrecta. Intenta de nuevo.");
     }
 });
 
-// Cerrar modal al hacer clic fuera
+// Cerrar modales al hacer clic fuera
 window.addEventListener("click", function (e) {
     if (e.target === registerModal) registerModal.style.display = "none";
     if (e.target === loginModal) loginModal.style.display = "none";
-});
-
-// Botón adicional para abrir el modal de registro centrado
-document.getElementById("registerBtnCentered").addEventListener("click", function (e) {
-    e.preventDefault();
-    registerModal.style.display = "flex";
 });
 
 // Redirigir según el botón clickeado
@@ -113,4 +103,3 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         alert("Cédula incorrecta. Intenta de nuevo.");
     }
 });
-
