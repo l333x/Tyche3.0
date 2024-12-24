@@ -1,0 +1,140 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F2E6D8; /* Fondo claro */
+    color: #333;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #B08968;
+    color: white;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Container */
+.main-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Info Section */
+.info-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #D9C6A5;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2, .info-section h3 {
+    color: #774936;
+}
+
+/* Catalog Section */
+.catalog-section {
+    text-align: center;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.product-card {
+    width: 200px;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    color: #333;
+}
+
+.product-card button {
+    background-color: #B08968;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: #774936;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    background-color: #B08968;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #774936;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #B08968;
+    color: white;
+}
