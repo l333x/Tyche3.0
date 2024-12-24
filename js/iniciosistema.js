@@ -73,4 +73,44 @@ document.getElementById("registerBtnCentered").addEventListener("click", functio
     registerModal.style.display = "flex";
 });
 
+// Redirigir según el botón clickeado
+const botonesAccion = document.querySelectorAll(".action-button");
+let botonRedirigir = null;
+
+botonesAccion.forEach(boton => {
+    boton.addEventListener("click", function (e) {
+        e.preventDefault();
+        botonRedirigir = e.target.id; // Guardar el botón clickeado
+        loginModal.style.display = "flex"; // Mostrar modal de inicio de sesión
+    });
+});
+
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const cedula = document.getElementById("loginCedula").value.trim();
+    const usuario = usuarios.find(user => user.cedula === cedula);
+
+    if (usuario) {
+        loginModal.style.display = "none";
+        alert(`¡Bienvenido, ${usuario.nombre}!`);
+
+        // Redirigir según el botón clickeado previamente
+        switch (botonRedirigir) {
+            case "btnConocerMas":
+                window.location.href = "informacion.html";
+                break;
+            case "btnConocerProyecto":
+                window.location.href = "informacion.html";
+                break;
+            case "btnRegistrateAhora":
+                window.location.href = "registro.html";
+                break;
+            default:
+                alert("No se pudo redirigir.");
+        }
+    } else {
+        alert("Cédula incorrecta. Intenta de nuevo.");
+    }
+});
 
