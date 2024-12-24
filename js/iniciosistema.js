@@ -48,13 +48,18 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     const usuario = usuarios.find(user => user.cedula === cedula);
 
     if (usuario) {
+        // Guardar el nombre del usuario en sessionStorage
+        sessionStorage.setItem("usuarioNombre", usuario.nombre);
+        sessionStorage.setItem("cedula", usuario.cedula);
+
         alert(`¡Bienvenido, ${usuario.nombre}!`);
-        loginModal.style.display = "none"; // Cerrar modal
-        // Guardar usuario logueado (simulación de sesión)
-        sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
+
+        // Redirigir a inicio.html
+        window.location.href = "inicio.html";
     } else {
         alert("Cédula incorrecta. Intenta de nuevo.");
     }
+
 });
 
 // Cerrar modales al hacer clic fuera
