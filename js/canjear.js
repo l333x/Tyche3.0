@@ -1,13 +1,14 @@
 const products = [
-    { id: 1, name: "Producto 1", image: "heart.png" },
-    { id: 2, name: "Producto 2", image: "heart.png" },
-    { id: 3, name: "Producto 3", image: "heart.png" },
+    { id: 1, name: "Producto 1", image: "png/Producto1.png" },
+    { id: 2, name: "Producto 2", image: "png/Producto2.png" },
+    { id: 3, name: "Producto 3", image: "png/Producto3.png" },
     { id: 4, name: "Producto 4", image: "heart.png" },
     { id: 5, name: "Producto 5", image: "heart.png" },
     { id: 6, name: "Producto 6", image: "heart.png" },
+
 ];
 
-const productsPerPage = 4;
+const productsPerPage = 3; // Mostrar solo los tres productos
 let currentPage = 1;
 
 const productsContainer = document.getElementById("productsContainer");
