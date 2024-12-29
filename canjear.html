@@ -8,17 +8,17 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="title">Tyche</h1>
-         <nav>
+        <h1 class="title">Tyché</h1>
+        <nav>
             <ul class="menu">
-                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="politicas.html">Políticas de Uso</a></li>
                 <li><a href="manual.html">Manual de Uso</a></li>
-                <li><a href="informacion.html">Acerca de Nosotros</a></li>
+                <li><a href="acerca.html">Acerca de Nosotros</a></li>
                 <li><a href="canjear.html">Canjear Recompensas</a></li>
             </ul>
         </nav>
-
+        
     </header>
 
     <main class="main-container">
@@ -44,6 +44,17 @@
             </div>
         </section>
     </main>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <img id="modalImage" src="" alt="Producto">
+            <h3 id="modalTitle">Título del Producto</h3>
+            <p id="modalDescription">Descripción breve del producto.</p>
+            <p id="modalPoints">Puntos necesarios: <span id="pointsNeeded">0</span></p>
+            <button id="redeemButton">Canjear</button>
+        </div>
+    </div>
+    
 
     <footer class="footer">
         <p>&copy; 2024 Tyche. Transformando el esfuerzo en recompensas.</p>
