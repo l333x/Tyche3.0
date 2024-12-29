@@ -26,7 +26,128 @@ body, html {
     padding: 1rem 2rem;
     background-color: var(--color-navbar); /* Azul oscuro */
     color: var(--color-blanco); /* Blanco */
+}/* Variables de color */
+:root {
+    --color-primario: #B08968; /* Marrón claro */
+    --color-secundario: #D9C6A5; /* Beige */
+    --color-oscuro: #2C3E50; /* Azul oscuro */
+    --color-texto: #000; /* Negro */
+    --color-blanco: #FFF; /* Blanco */
+    --color-navbar: #2C3E50; /* Azul oscuro */
+    --color-fondobeneficio: #F2E6D8; /* Fondo claro */
 }
+
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    background-color: var(--color-fondobeneficio);
+    color: var(--color-texto);
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-navbar); /* Azul oscuro */
+    color: var(--color-blanco); /* Blanco */
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Helvetica-Bold';
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--color-secundario);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.modal-content h3 {
+    font-family: 'Helvetica-Bold';
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    margin: 0.5rem 0;
+    color: var(--color-texto);
+}
+
+.modal-content button {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Helvetica-Bold';
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: var(--color-oscuro);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-oscuro);
+}
+
 
 .title {
     font-size: 1.5rem;
