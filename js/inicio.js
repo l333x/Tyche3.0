@@ -33,19 +33,19 @@ const actividadesExtracurriculares = [
 // Usuario logueado
 const currentUser = sessionStorage.getItem("cedula");
 const userName = sessionStorage.getItem("usuarioNombre");
+const userLastName = sessionStorage.getItem("usuarioApellido");
 
-// Mostrar nombre del usuario logueado
-document.getElementById("userNameBox").innerText = userName || "Usuario";
+// Mostrar nombre y apellido del usuario logueado
+document.getElementById("userNameBox").innerText = `${userName || "Usuario"} ${userLastName || ""}`.trim();
 
 // Mostrar botones dependiendo del usuario
-if (["001", "002", "003", "004", "005"].includes(currentUser)) {
+if (["001", "002", "004"].includes(currentUser)) {
     document.getElementById("loadAcademicBtn").style.display = "inline-block";
     document.getElementById("loadExtraBtn").style.display = "inline-block";
 } else {
     document.getElementById("loadAcademicBtn").style.display = "none";
     document.getElementById("loadExtraBtn").style.display = "none";
 }
-
 // Función para mostrar actividades dinámicamente
 function displayActivity(containerId, activities, index) {
     const container = document.getElementById(containerId);
