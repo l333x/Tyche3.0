@@ -30,21 +30,15 @@ const actividadesExtracurriculares = [
     { nombre: "Torneo de Debate", puntos: 50, estado: "Completada" }
 ];
 
-// Usuario logueado (simulado)
-const currentUser = sessionStorage.getItem("cedula") || "001";
-const users = {
-    "001": "Victor",
-    "002": "Gabriel",
-    "003": "Josue",
-    "004": "Sebastian",
-    "005": "Mateo"
-};
+// Usuario logueado
+const currentUser = sessionStorage.getItem("cedula");
+const userName = sessionStorage.getItem("usuarioNombre");
 
-// Mostrar nombre del usuario
-document.getElementById("userNameBox").innerText = users[currentUser] || "Usuario";
+// Mostrar nombre del usuario logueado
+document.getElementById("userNameBox").innerText = userName || "Usuario";
 
-// Mostrar botones para cedulas 001 y 002
-if (currentUser === "001" || currentUser === "002") {
+// Mostrar botones dependiendo del usuario
+if (["001", "002", "003", "004", "005"].includes(currentUser)) {
     document.getElementById("loadAcademicBtn").style.display = "inline-block";
     document.getElementById("loadExtraBtn").style.display = "inline-block";
 } else {
