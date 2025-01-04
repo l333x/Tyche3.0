@@ -74,7 +74,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     if (usuario) {
         // Guardar el nombre del usuario en sessionStorage
         sessionStorage.setItem("usuarioNombre", usuario.nombre);
+        sessionStorage.setItem("usuarioApellido", usuario.apellidos);
         sessionStorage.setItem("cedula", usuario.cedula);
+        
+
 
         alert(`¡Bienvenido, ${usuario.nombre}!`);
 
