@@ -1,3 +1,4 @@
+//Matriz de productos
 const products = [
     { id: 1, name: "Cuaderno Universitario", description: "Un cuaderno de 100 hojas con el logo de la universidad.", points: 50, image: "png/Producto1.png" },
     { id: 2, name: "Lápices de Colores", description: "Set de 12 lápices de colores ideales para actividades creativas.", points: 30, image: "png/Producto2.png" },
@@ -19,38 +20,37 @@ const products = [
     { id: 18, name: "Pegatinas Universitarias", description: "Set de pegatinas con diseños relacionados a la universidad.", points: 10, image: "png/Producto18.png" }
 ];
 
-
-const productsPerPage = 6; // Cambia a 6 para mostrar más productos por página
+const productsPerPage = 6; // Mostrar 6 productos por página
 let currentPage = 1;
 
 const productsContainer = document.getElementById("productsContainer");
 const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
 
-// Render Products
+// Renderizar productos
 function renderProducts(page) {
     productsContainer.innerHTML = "";
     const start = (page - 1) * productsPerPage;
     const end = start + productsPerPage;
     const currentProducts = products.slice(start, end);
 
-    currentProducts.forEach(product => {
+    currentProducts.forEach((product, index) => {
         const productCard = document.createElement("div");
         productCard.className = "product-card";
         productCard.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
-            <button>Canjear</button>
+            <button class="redeem-btn" data-index="${start + index}">Canjear</button>
         `;
         productsContainer.appendChild(productCard);
     });
 
-    // Disable buttons if at the start or end
+    // Deshabilitar botones si es el inicio o el final
     prevButton.disabled = page === 1;
     nextButton.disabled = end >= products.length;
 }
 
-// Pagination
+// Paginación
 prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -65,57 +65,48 @@ nextButton.addEventListener("click", () => {
     }
 });
 
-// Initial Render
+// Inicializar Renderizado
 renderProducts(currentPage);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('productModal');
-    const closeModal = document.getElementById('closeModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalPoints = document.getElementById('pointsNeeded');
-    const redeemButtons = document.querySelectorAll('.product-card button');
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("productModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalPoints = document.getElementById("pointsNeeded");
+    const redeemButton = document.getElementById("redeemButton");
 
-    const products = [
-        {
-            title: 'Producto 1',
-            description: 'Calculadora científica avanzada.',
-            points: 200,
-            image: 'png/Producto1.png'
-        },
-        {
-            title: 'Producto 2',
-            description: 'Juego de reglas y escuadras.',
-            points: 150,
-            image: 'png/Producto2.png'
-        },
-        {
-            title: 'Producto 3',
-            description: 'Paquete de cuadernos.',
-            points: 100,
-            image: 'png/Producto3.png'
-        }
-    ];
+    const whatsappNumber = "593960145588"; // Cambia por tu número de WhatsApp
 
-    redeemButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            const product = products[index];
+    document.addEventListener("click", (event) => {
+        if (event.target.classList.contains("redeem-btn")) {
+            const productIndex = event.target.getAttribute("data-index");
+            const product = products[productIndex];
+
             modalImage.src = product.image;
-            modalTitle.textContent = product.title;
+            modalTitle.textContent = product.name;
             modalDescription.textContent = product.description;
             modalPoints.textContent = product.points;
-            modal.style.display = 'flex';
-        });
+            modal.style.display = "flex";
+
+            // Configurar el botón de canjear
+            redeemButton.onclick = () => {
+                const message = `Deseo canjear este producto: ${product.name}. Espero la confirmación.`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappLink, "_blank"); // Redirigir a WhatsApp
+            };
+        }
     });
 
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
     });
 
-    window.addEventListener('click', (event) => {
+    window.addEventListener("click", (event) => {
         if (event.target === modal) {
-            modal.style.display = 'none';
+            modal.style.display = "none";
         }
     });
 });
