@@ -126,7 +126,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
                 window.location.href = "informacion.html";
                 break;
             case "btnRegistrateAhora":
-                window.location.href = "registro.html";
+                window.location.href = "inicio.html";
                 break;
             default:
                 
