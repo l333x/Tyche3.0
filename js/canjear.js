@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalPoints = document.getElementById("pointsNeeded");
     const redeemButton = document.getElementById("redeemButton");
 
-    const whatsappNumber = "593960145588"; // Cambia por tu número de WhatsApp
+    const whatsappNumber = "593995866394"; // Cambia por tu número de WhatsApp
 
     document.addEventListener("click", (event) => {
         if (event.target.classList.contains("redeem-btn")) {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Configurar el botón de canjear
             redeemButton.onclick = () => {
-                const message = `Deseo canjear este producto: ${product.name}. Espero la confirmación.`;
+                const message = `Vengo de Tyché, deseo canjear este producto: ${product.name}. Espero la confirmación muchas gracias.`;
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
                 window.open(whatsappLink, "_blank"); // Redirigir a WhatsApp
