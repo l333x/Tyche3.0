@@ -1,24 +1,13 @@
-@font-face {
-    font-family: 'Helvetica';
-    src: local('Helvetica');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'Helvetica';
-    src: local('Helvetica-Bold');
-    font-weight: bold;
-}
-
 :root {
-    --color-principal: #B08968; 
-    --color-secundario: #D9C6A5; 
+    --color-principal: #B08968; /* Marrón claro */
+    --color-secundario: #D9C6A5; /* Beige */
     --color-fondo: rgba(0, 0, 0, 0.6); 
-    --color-texto: #FFFFFF;
-    --color-borde-boton: #774936;
-    --color-fondobeneficio: #F2E6D8; /* Nuevo color secundario */
-       
+    --color-texto: #FFFFFF; /* Blanco */
+    --color-borde-boton: #2C3E50; /* Marrón oscuro */
+    --color-fondobeneficio: #F2E6D8; /* Fondo beige */
 }
+
+/* General Styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -28,17 +17,19 @@ body, html {
     box-sizing: border-box;
 }
 
-/* Ajuste de la imagen de fondo */
+/* Hero Section */
 .hero-section {
     background: url('../png/Foto4.png') no-repeat center center/cover;
-    height: 80vh; /* Reducir el tamaño */
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-bottom: 2.5rem; /* Incrementar el margen inferior */
 }
 
-/* Ajustar tamaño y posición del overlay */
+
+
 .overlay {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
@@ -60,57 +51,7 @@ body, html {
     font-weight: bold;
 }
 
-/* Contenedor de Secciones */
-.section-container {
-    background-color: var(--color-secundario);
-    padding: 2rem;
-    margin: 2rem auto;
-    border-radius: 12px;
-    max-width: 900px;
-    color: #333; /* Texto oscuro */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: justify;
-}
-
-.section-container h2, .section-container h3 {
-    color: var(--color-principal);
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.section-container p {
-    text-align: center; /* Centrar botones */
-    margin-bottom: 1rem;
-}
-
 /* Botones */
-
-.action-button {
-    display: inline-block;
-    padding: 0.7rem 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--color-secundario);
-    border: 2px solid var(--color-borde-boton);
-    border-radius: 30px;
-    background-color: var(--color-principal);
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-    margin: 1rem auto; /* Asegurar separación y centrado */
-}
-
-.action-button:hover {
-    background-color: var(--color-borde-boton);
-    color: var(--color-texto);
-}
-
-/* Asegurar que los contenedores tengan centrado */
-.section-container {
-    text-align: center;
-}
-
-
 .btn {
     display: inline-block;
     padding: 0.7rem 2rem;
@@ -122,6 +63,9 @@ body, html {
     background-color: var(--color-principal);
     text-align: center;
     transition: all 0.3s ease-in-out;
+    margin: 1rem auto;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .btn:hover {
@@ -129,40 +73,59 @@ body, html {
     color: var(--color-texto);
 }
 
-/* Centrar botones en todas las secciones */
-.center-btn {
-    display: block;
-    margin: 1rem auto;
-    text-align: center;
-}
-/* Ajuste de botones para "Beneficios" */
-.beneficios-container .btn {
-    margin: 1rem auto;
-    display: block;
+/* Contenedor de Secciones */
+.section-container {
+    background-color: var(--color-secundario);
+    padding: 2rem;
+    margin: 1.5rem auto; /* Reducir margen superior e inferior */
+    border-radius: 12px;
+    max-width: 900px;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Beneficios verticales */
+
+.section-container h2, .section-container h3 {
+    color: var(--color-principal);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Beneficios Section */
+.beneficios-section {
+    background-color: var(--color-secundario);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.beneficios-section h2 {
+    text-align: center;
+    color: var(--color-principal);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
 .beneficios-container {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
 .beneficio-box {
+    flex: 1 1 calc(33.33% - 2rem);
     background-color: var(--color-fondobeneficio);
-    color: #333;
     padding: 1.5rem;
     border-radius: 12px;
-    text-align: justify;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-.beneficios-container .btn-container {
-    text-align: center; /* Centrar botón en beneficios */
-    margin-top: 1.5rem;
+    text-align: center;
 }
 
-/* Estilos para Modales */
+/* Modales */
 .modal {
     display: none;
     position: fixed;
@@ -185,43 +148,31 @@ body, html {
     position: relative;
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--color-borde-boton);
-}
-
-/* Estilos generales para los inputs y select del modal */
 .modal-content input,
 .modal-content select {
-    width: 100%;                /* Ancho completo */
-    padding: 0.7rem;            /* Espaciado interno */
-    margin: 1rem 0;             /* Margen superior e inferior */
-    border: 1px solid #ccc;     /* Borde delgado y gris */
-    border-radius: 8px;         /* Bordes redondeados */
-    box-sizing: border-box;     /* Ajustar al ancho del contenedor */
-    font-family: inherit;       /* Heredar fuente principal */
-    font-size: 1rem;            /* Tamaño de texto */
-    color: #333;                /* Color de texto */
-    background-color: #fff;     /* Fondo blanco */
-    outline: none;              /* Quitar borde de selección */
-    transition: border 0.3s ease-in-out; /* Transición suave */
+    width: 100%;
+    padding: 0.7rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    outline: none;
+    transition: border 0.3s ease-in-out;
 }
 
 .modal-content input:focus,
 .modal-content select:focus {
-    border-color: #B08968; /* Cambiar color del borde al enfocar */
+    border-color: var(--color-principal);
     box-shadow: 0 0 5px rgba(176, 137, 104, 0.5);
 }
 
-/* Estilo del botón para que combine */
 .modal-content button {
-    margin-top: 1rem;
-    background-color: #B08968; /* Marrón principal */
-    color: #fff;              /* Texto blanco */
+    background-color: var(--color-principal);
+    color: #fff;
     border: none;
     padding: 0.7rem 1.5rem;
     border-radius: 8px;
@@ -232,13 +183,41 @@ body, html {
 }
 
 .modal-content button:hover {
-    background-color: #8A6A4F; /* Marrón más oscuro al pasar el mouse */
+    background-color: var(--color-borde-boton);
 }
 
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-principal);
+}
 
+.info-box {
+    flex: 1;
+    background-color: var(--color-secundario); /* Fondo beige */
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center; /* Texto justificado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin: 0 1rem; /* Espaciado entre las cajas */
+}
+
+.horizontal-container {
+    display: flex;
+    justify-content: space-between; /* Espacio uniforme entre cajas */
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem; /* Separación inferior */
+}
+
+/* Footer */
 .footer {
-    text-align: center;
     background-color: var(--color-borde-boton);
+    text-align: center;
     padding: 1rem;
     color: var(--color-texto);
+    font-weight: bold;
 }
