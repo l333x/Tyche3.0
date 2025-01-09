@@ -110,6 +110,71 @@ span {
     color: var(--color-titulo);
 }
 
+/* Estilos para el menú de hamburguesa */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: var(--color-navbar);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* Estilos para el botón de cerrar sesión */
+.logout-icon {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: var(--color-navbar);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
 .logo {
     font-weight: bold;
     font-size: 2rem;
