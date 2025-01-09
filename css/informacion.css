@@ -227,12 +227,23 @@ body {
     }
 }
 
-
-.logo {
-    font-weight: bold;
-    font-size: 2rem;
-    color: var(--color-primario);
+/* Contenedor del logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 0.75rem; /* Espacio entre el logo y el menú */
 }
+
+/* Imagen del logo */
+.logo-image {
+    max-width: 120px; /* Establece el tamaño máximo del logo */
+    height: auto; /* Mantiene la proporción de la imagen */
+    cursor: pointer;
+    margin-right: 1rem; /* Espacio entre el logo y el menú */
+    object-fit: contain; /* Asegura que la imagen no se deforme */
+}
+
+
 /* Centrar texto de "Miembros" */
 .section-miembros h2,
 .section-miembros .subtitle {
