@@ -140,6 +140,14 @@ body {
     padding: 2rem;
     border-radius: 12px;
     color: var(--color-blanco);
+    width: 500px; /* Ancho fijo */
+    height: 200px; /* Altura fija para formar un cuadrado */
+    margin: 0 auto; /* Centra horizontalmente el cuadro */
+    display: flex; /* Alineación interna */
+    flex-direction: column; /* Asegura que el contenido se ordene en columna */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para un diseño más atractivo */
 }
 
 .user-name-box {
