@@ -115,6 +115,20 @@ body {
     }
 }
 
+/* Contenedor del logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem; /* Ajusta el espacio entre el logo y el menú */
+}
+
+/* Imagen del logo */
+.logo-image {
+    width: 120px; /* Tamaño pequeño del logo */
+    height: auto;
+    cursor: pointer;
+}
+
 /* Sección Bienvenida */
 .welcome-section {
     text-align: center;
