@@ -18,6 +18,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+// Función para cerrar sesión
+logoutButton.addEventListener("click", () => {
+    sessionStorage.clear(); // Limpia la sesión
+    window.location.href = "index.html"; // Redirige al inicio de sesión
+});
+
 // Matriz actividades academicas
 const actividadesAcademicas = [
     { nombre: "Bono por cumplimiento del 90 por ciento de asistencia en el periodo académico", puntos: 20, estado: "Pendiente" },
