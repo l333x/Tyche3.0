@@ -2,6 +2,22 @@
 let academicIndex = 0;
 let extraIndex = 0;
 
+// Selección del menú de hamburguesa y los enlaces
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+
+// Alternar visibilidad del menú de navegación
+hamburgerMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Cerrar el menú de hamburguesa al hacer clic en un enlace
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
 // Matriz actividades academicas
 const actividadesAcademicas = [
     { nombre: "Bono por cumplimiento del 90 por ciento de asistencia en el periodo académico", puntos: 20, estado: "Pendiente" },
@@ -457,3 +473,4 @@ closeModal.addEventListener("click", () => modal.style.display = "none");
 window.addEventListener("click", (e) => {
     if (e.target === modal) modal.style.display = "none";
 });
+
