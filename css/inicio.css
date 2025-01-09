@@ -1,19 +1,7 @@
-@font-face {
-    font-family: 'Helvetica';
-    src: local('Helvetica');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'Helvetica-Bold';
-    src: local('Helvetica-Bold');
-    font-weight: bold;
-}
-
 :root {
     --color-principal: #A67542;  /* Marrón principal */
     --color-secundario: #F2E6D8; /* Beige claro */
-    --color-acento: #2C3E50;     /* Azul Oscuro */
+    --color-acento: #2C3E50;     /* Azul oscuro */
     --color-texto: #2C3E50;      /* Texto principal azul oscuro */
     --color-fondo: #CBB78C;      /* Beige intermedio */
     --color-blanco: #FFFFFF;     /* Blanco */
@@ -23,14 +11,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Helvetica', Arial, sans-serif;
-    background-color: var(--color-secundario); /* Fondo Beige Claro */
+    background-color: var(--color-secundario);
     color: var(--color-texto);
     line-height: 1.6;
 }
 
 /* Menú de Navegación */
 .navbar {
-    background-color: var(--color-acento); /* Azul Oscuro */
+    background-color: var(--color-acento);
     color: var(--color-blanco);
     display: flex;
     justify-content: space-between;
@@ -38,30 +26,93 @@ body {
     padding: 1rem 2rem;
 }
 
+/* Menú de Navegación */
+.navbar {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
 .nav-links {
-    list-style: none;
     display: flex;
     gap: 1.5rem;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: var(--color-acento);
+    padding: 10px;
+    border-radius: 5px;
+    width: calc(100% - 20px);
+    z-index: 1000;
+}
+
 .nav-links a {
-    text-decoration: none;
     color: var(--color-blanco);
-    font-size: 1rem;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-principal);
+}
+
+.nav-links a:last-child {
+    border-bottom: none;
 }
 
 .nav-links a:hover {
-    color: var(--color-principal); /* Marrón */
+    color: var(--color-principal);
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 2rem;
-    color: var(--color-principal);
+.logout-icon {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* Estilo del menú de hamburguesa */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Ocultar menú por defecto */
+        flex-direction: column;
+        background-color: var(--color-acento);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .hamburger-menu {
+        display: block; /* Mostrar menú de hamburguesa */
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostrar el menú al activarlo */
+    }
 }
 
 /* Sección Bienvenida */
@@ -70,21 +121,16 @@ body {
     margin: 2rem 0;
 }
 
-.welcome-section h1 {
-    font-size: 2.5rem;
-    font-family: 'Helvetica-Bold';
-    color: var(--color-blanco); /* Azul Oscuro */
-}
-
 .overlay {
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo Oscuro Transparente */
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 2rem;
     border-radius: 12px;
+    color: var(--color-blanco);
 }
 
 .user-name-box {
-    background-color: var(--color-acento); /* Azul Oscuro */
-    color: var(--color-secundario); /* Beige Claro */
+    background-color: var(--color-acento);
+    color: var(--color-secundario);
     display: inline-block;
     padding: 0.5rem 1.5rem;
     border-radius: 8px;
@@ -96,8 +142,8 @@ body {
 .activities-section {
     text-align: center;
     padding: 2rem;
-    background-color: var(--color-principal); /* Marrón */
-    color: var(--color-blanco); /* Blanco */
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
 }
 
 .activities-container {
@@ -108,63 +154,17 @@ body {
 }
 
 .activity-box {
-    background-color: var(--color-fondo); /* Beige Intermedio */
-    color: var(--color-texto); /* Azul Oscuro */
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
     padding: 1.5rem;
     border-radius: 12px;
     width: 45%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.activity-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra todo el contenido de la caja verticalmente */
-    align-items: center; /* Centra todo el contenido horizontalmente */
-    padding: 1rem;
-    height: auto; /* Ajusta automáticamente la altura del contenido */
-}
-
-.activity-content {
-    background-color: var(--color-blanco);
-    color: var(--color-texto);
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto; /* Permite que el cuadro se ajuste al contenido */
-    max-width: 90%; /* Reduce el ancho máximo del cuadro */
-    margin: 0 auto 1rem auto; /* Añade un margen inferior */
-    box-sizing: border-box;
-}
-.activity-content p {
-    margin: 0.5rem 0; /* Espaciado uniforme entre párrafos */
-}
-
-.activity-content span {
-    font-weight: bold; /* Negrita para los títulos */
-}
-
-
-/* Botones */
-.btn {
-    background-color: var(--color-acento); /* Azul Oscuro */
-    color: var(--color-secundario); /* Beige Claro */
-    border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #1A252F; /* Azul Más Oscuro */
-    color: var(--color-blanco);
+/* Margen inferior para los botones de cargar actividades */
+.buttons-container .btn {
+    margin: 0 1rem 1rem; /* Agrega un margen inferior de 1rem */
 }
 
 /* Modal */
@@ -214,32 +214,28 @@ body {
     margin-top: 1rem;
 }
 
-/* Agregando animación opcional */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Botones */
+.btn {
+    background-color: var(--color-acento);
+    color: var(--color-secundario);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-/* Botones adicionales */
-.buttons-container {
+.btn:hover {
+    background-color: #1A252F;
+    color: var(--color-blanco);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-acento);
+    color: var(--color-blanco);
     text-align: center;
-    margin-bottom: 2rem;
-}
-
-.buttons-container .btn {
-    margin: 0 1rem;
-}
-.buttons-container {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.buttons-container .btn {
-    margin: 0 1rem;
+    padding: 1rem;
+    font-size: 1rem;
 }
