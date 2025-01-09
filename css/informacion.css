@@ -184,6 +184,50 @@ body {
     color: var(--color-primario);
 }
 
+/* Botón de cerrar sesión */
+.logout-icon {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* Menú de hamburguesa */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: var(--color-oscuro);
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+}
+
+
 .logo {
     font-weight: bold;
     font-size: 2rem;
@@ -240,3 +284,4 @@ body {
     margin-top: 2rem;
     font-family: 'Helvetica-Bold';
 }
+
