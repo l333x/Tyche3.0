@@ -190,10 +190,19 @@ strong {
     }
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 2rem;
-    color: var(--color-titulo);
+/* Contenedor del logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem; /* Ajusta el espacio entre el logo y el menú */
+}
+
+/* Imagen del logo */
+.logo-image {
+    max-width: 120px; /* Define el ancho máximo */
+    height: auto; /* Mantén la proporción de la imagen */
+    cursor: pointer;
+    margin-right: 1rem; /* Espacio entre el logo y el menú */
 }
 
 /* Cartas de Sección */
