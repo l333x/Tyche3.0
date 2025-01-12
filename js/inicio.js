@@ -24,6 +24,39 @@ logoutButton.addEventListener("click", () => {
     window.location.href = "index.html"; // Redirige al inicio de sesión
 });
 
+// Matriz de usuarios
+const usuarios = [
+    { cedula: "001", nombre: "Victor", apellidos: "Segura", carrera: "Negocios Digitales" },
+    { cedula: "002", nombre: "Gabriel", apellidos: "Toaquiza", carrera: "Negocios Digitales" },
+    { cedula: "003", nombre: "Josue", apellidos: "Martinez", carrera: "Negocios Digitales" },
+    { cedula: "004", nombre: "Sebastian", apellidos: "Moreno", carrera: "Negocios Digitales" },
+    { cedula: "005", nombre: "Mateo", apellidos: "Carcelen", carrera: "Negocios Digitales" },
+    { cedula: "1722273487", nombre: "Joseph", apellidos: "Torres", carrera: "Psicología" },
+    { cedula: "1756066088", nombre: "Alan", apellidos: "Singaña", carrera: "Negocios Digitales" },
+    { cedula: "1727522490", nombre: "Daniel", apellidos: "Tituaña", carrera: "Negocios Digitales" },
+    { cedula: "0820226230", nombre: "Mateo", apellidos: "Yanez", carrera: "Negocios Digitales" },
+    { cedula: "0114368753", nombre: "Anahi", apellidos: "Díaz", carrera: "Negocios Digitales" },
+    { cedula: "1823456706", nombre: "Pamela", apellidos: "Padilla", carrera: "Negocios Digitales" },
+    { cedula: "1246789058", nombre: "Jesús", apellidos: "Barreto", carrera: "Negocios Digitales" },
+    { cedula: "1720203650", nombre: "Diana", apellidos: "Carrera", carrera: "Negocios Digitales" },
+    { cedula: "1726251134", nombre: "Joffre", apellidos: "Chacón", carrera: "Negocios Digitales" },
+    { cedula: "1759696492", nombre: "Erick", apellidos: "Carvajal", carrera: "Odontología" },
+    { cedula: "1722654405", nombre: "Amelia", apellidos: "Reinoso", carrera: "Negocios Digitales" },
+    { cedula: "1036839165", nombre: "Xavier", apellidos: "Casa", carrera: "Negocios Digitales" },
+    { cedula: "1839250147", nombre: "Jorge", apellidos: "Rodríguez", carrera: "Negocios Digitales" },
+    { cedula: "1725254895", nombre: "Camila", apellidos: "Andrade", carrera: "Negocios Digitales" },
+    { cedula: "1162374900", nombre: "Diego", apellidos: "Benítez", carrera: "Negocios Digitales" },
+    { cedula: "1755436415", nombre: "Emily", apellidos: "Romero", carrera: "Psicología" },
+    { cedula: "1725083297", nombre: "Carlos", apellidos: "Rodriguez", carrera: "Psicología" },
+    { cedula: "1753461092", nombre: "Christian", apellidos: "Mármol", carrera: "Derecho" },
+    { cedula: "1729165942", nombre: "Emily", apellidos: "Toledo", carrera: "Psicología" },
+    { cedula: "1753717667", nombre: "Alexey", apellidos: "Rubio", carrera: "Psicología" },
+    { cedula: "1751284678", nombre: "Daniela", apellidos: "Lema", carrera: "Derecho" },
+    { cedula: "1750777938", nombre: "Patricio", apellidos: "Simba", carrera: "Derecho" },
+    { cedula: "1106076878", nombre: "Emily", apellidos: "Marín", carrera: "Derecho" },
+    { cedula: "1725499691", nombre: "Seleni", apellidos: "Jurado", carrera: "Psicología" }
+];
+
 // Matriz actividades academicas
 const actividadesAcademicas = [
     { nombre: "Bono por cumplimiento del 90 por ciento de asistencia en el periodo académico", puntos: 20, estado: "Pendiente" },
@@ -479,4 +512,53 @@ closeModal.addEventListener("click", () => modal.style.display = "none");
 window.addEventListener("click", (e) => {
     if (e.target === modal) modal.style.display = "none";
 });
+
+
+// Lista de cédulas de administradores
+const adminUsers = ["001", "002", "004"]; // Asegúrate de ajustar esta lista con las cédulas de los administradores
+
+// Seleccionar el botón de descarga de Excel
+const downloadExcelBtn = document.getElementById("downloadExcel");
+
+// Validar si la cédula del usuario pertenece a los administradores
+if (adminUsers.includes(currentUser)) {
+    downloadExcelBtn.style.display = "inline-block"; // Mostrar botón si es administrador
+} else {
+    downloadExcelBtn.style.display = "none"; // Ocultar botón si no es administrador
+}
+
+// Evento para descargar el archivo Excel
+downloadExcelBtn.addEventListener("click", () => {
+    // Construir los datos para el Excel
+    const data = usuarios.map(user => {
+        const actividades = actividadesPorUsuario[user.cedula] || { academicas: [], extracurriculares: [] };
+        const academicas = actividades.academicas.map(act => act.nombre).join(", ");
+        const extracurriculares = actividades.extracurriculares.map(act => act.nombre).join(", ");
+        return {
+            "Cédula": user.cedula,
+            "Nombre Completo": `${user.nombre} ${user.apellidos}`,
+            "Carrera": user.carrera,
+            "Actividades Académicas": academicas || "Sin actividades asignadas",
+            "Actividades Extracurriculares": extracurriculares || "Sin actividades asignadas"
+        };
+    });
+
+    // Crear una hoja de Excel con los datos
+    const ws = XLSX.utils.json_to_sheet(data);
+
+    // Crear un libro de Excel
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Usuarios y Actividades");
+
+    // Descargar el archivo
+    XLSX.writeFile(wb, "Usuarios_Actividades.xlsx");
+});
+
+
+
+
+
+
+
+
 
