@@ -11,7 +11,6 @@
 
 /* Reset de estilos generales */
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -22,32 +21,6 @@ body {
     color: var(--color-texto);
 }
 
-/* Navbar */
-.navbar {
-    background-color: var(--color-oscuro);
-    color: var(--color-blanco);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--color-blanco);
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--color-primario);
-}
 
 .logo {
     font-weight: bold;
@@ -154,22 +127,26 @@ body {
 .miembro span {
     font-size: 0.9rem;
 }
-/* Menú de Navegación */
+
 .navbar {
-    background-color: var(--color-oscuro);
+    background-color: var(--color-navbar);
     color: var(--color-blanco);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    position: relative; /* Asegura que el menú no se superponga */
+    z-index: 1000; /* Asegura que el menú esté encima de otros elementos */
 }
+
+
 
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
-    margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-links a {
@@ -201,47 +178,60 @@ body {
 .hamburger-menu img {
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
-/* Estilos para pantallas pequeñas */
+
+/* Estilo para pantallas pequeñas */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background-color: var(--color-oscuro);
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 1000;
+        display: none; /* Ocultar menú por defecto */
+        flex-direction: column; /* Alinear elementos verticalmente */
+        background-color: var(--color-navbar); /* Fondo oscuro */
+        position: absolute; /* Posicionarlo debajo de la barra de navegación */
+        top: 60px; /* Ajusta según la altura de la navbar */
+        right: 0;
+        width: 100%; /* Ocupa todo el ancho */
+        padding: 10px 0;
+        border-radius: 5px; /* Bordes redondeados */
+        z-index: 1000; /* Encima de otros elementos */
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex; /* Mostrar el menú cuando se activa */
+    }
+
+    .nav-links a {
+        text-align: center; /* Centrar texto */
+        padding: 10px 0; /* Espaciado interno */
+        font-weight: bold; /* Mantener el texto en negrita */
+        color: var(--color-blanco); /* Texto blanco */
+        transition: background-color 0.3s ease; /* Animación suave */
+    }
+
+    .nav-links a:hover {
+        background-color: var(--color-primario); /* Fondo marrón claro al pasar el mouse */
     }
 
     .hamburger-menu {
-        display: block;
+        display: block; /* Mostrar el icono de menú */
     }
 }
 
-/* Contenedor del logo */
+
 .logo-container {
     display: flex;
     align-items: center;
-    margin-right: 0.75rem; /* Espacio entre el logo y el menú */
+    margin-right: 1rem; /* Espaciado entre logo y menú */
 }
 
-/* Imagen del logo */
 .logo-image {
-    max-width: 120px; /* Establece el tamaño máximo del logo */
-    height: auto; /* Mantiene la proporción de la imagen */
+    max-width: 120px; /* Tamaño máximo del logo */
+    height: auto;
     cursor: pointer;
-    margin-right: 1rem; /* Espacio entre el logo y el menú */
-    object-fit: contain; /* Asegura que la imagen no se deforme */
+    object-fit: contain; /* Ajustar sin deformar */
 }
+
 
 
 /* Centrar texto de "Miembros" */
