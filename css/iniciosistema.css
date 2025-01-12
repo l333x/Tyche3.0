@@ -7,7 +7,6 @@
     --color-fondobeneficio: #F2E6D8; /* Fondo beige */
 }
 
-/* General Styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -15,8 +14,8 @@ body, html {
     color: #333;
     background-color: var(--color-principal); /* Fondo principal */
     box-sizing: border-box;
+    padding: 1rem; /* Margen interno uniforme */
 }
-
 /* Hero Section */
 .hero-section {
     background: url('../png/Foto4.png') no-repeat center center/cover;
@@ -110,20 +109,28 @@ body, html {
 }
 
 .beneficios-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Espaciado entre cajas */
+    justify-items: center; /* Centrar las cajas horizontalmente */
+    align-items: stretch; /* Asegurar que todas las cajas tengan la misma altura */
 }
 
 .beneficio-box {
-    flex: 1 1 calc(33.33% - 2rem);
     background-color: var(--color-fondobeneficio);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px; /* Asegurar una altura mínima */
 }
+
+
+
 
 /* Modales */
 .modal {
@@ -207,11 +214,25 @@ body, html {
 
 .horizontal-container {
     display: flex;
-    justify-content: space-between; /* Espacio uniforme entre cajas */
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: stretch; /* Asegura que las cajas tengan la misma altura */
     gap: 2rem;
-    margin-bottom: 2rem; /* Separación inferior */
+    margin-bottom: 2rem; 
 }
+
+@media (max-width: 768px) {
+    .horizontal-container {
+        flex-direction: column; /* Cambiar a una columna */
+        gap: 1rem; /* Espaciado más pequeño */
+    }
+
+    .beneficio-box {
+        flex: 1 1 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        max-width: 100%; /* Asegura que no exceda el contenedor */
+    }
+}
+
+
 
 /* Footer */
 .footer {
