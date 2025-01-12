@@ -80,7 +80,6 @@ span {
     color: var(--color-titulo);
 }
 
-/* Menú de Navegación */
 .navbar {
     background-color: var(--color-navbar);
     color: var(--color-blanco);
@@ -88,14 +87,17 @@ span {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    position: relative;
+    z-index: 1000;
+   
 }
 
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
-    margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-links a {
@@ -121,26 +123,33 @@ span {
     height: 30px;
 }
 
-/* Para pantallas pequeñas */
+/* Estilo para pantallas pequeñas */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: none; /* Ocultar menú por defecto */
         flex-direction: column;
-        gap: 1rem;
         background-color: var(--color-navbar);
         position: absolute;
-        top: 60px;
-        right: 10px;
-        padding: 10px;
+        top: 60px; /* Ajustar para que no se superponga */
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
         border-radius: 5px;
-    }
-
-    .hamburger-menu {
-        display: block;
+        z-index: 1000;
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex; /* Mostrar el menú */
+    }
+
+    .nav-links a {
+        text-align: center;
+        padding: 10px 0;
+        font-weight: bold; /* Mantener negrita */
+    }
+
+    .hamburger-menu {
+        display: block; /* Mostrar el menú de hamburguesa */
     }
 }
 
