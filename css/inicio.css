@@ -38,10 +38,10 @@ body {
 }
 
 .nav-links {
+    align-items: center;
     display: flex;
     gap: 1.5rem;
     list-style: none;
-    margin: 0;
     padding: 0;
 }
 
@@ -63,6 +63,7 @@ body {
     text-decoration: none;
     padding: 10px 0;
     text-align: center;
+    font-weight: bold;
     border-bottom: 1px solid var(--color-principal);
 }
 
@@ -113,7 +114,31 @@ body {
     .nav-links.active {
         display: flex; /* Mostrar el menú al activarlo */
     }
+    
 }
+@media (max-width: 768px) {
+    .overlay {
+        width: 90%; /* Reduce el ancho al 90% del contenedor */
+        height: auto; /* Permite que la altura sea automática */
+        padding: 1rem; /* Ajusta el padding para reducir espacio */
+        border-radius: 8px; /* Suaviza las esquinas */
+        font-size: 1rem; /* Reduce el tamaño de la fuente */
+    }
+
+    .overlay .title {
+        font-size: 2rem; /* Reduce el tamaño del título */
+    }
+
+    .overlay .subtitle {
+        font-size: 1rem; /* Ajusta el subtítulo */
+    }
+
+    .user-name-box {
+        font-size: 1rem; /* Ajusta el tamaño del texto */
+        padding: 0.4rem 1rem; /* Reduce el padding interno */
+    }
+}
+
 
 /* Contenedor del logo */
 .logo-container {
@@ -140,7 +165,7 @@ body {
     padding: 2rem;
     border-radius: 12px;
     color: var(--color-blanco);
-    width: 500px; /* Ancho fijo */
+    width: 80%; /* Ancho fijo */
     height: 200px; /* Altura fija para formar un cuadrado */
     margin: 0 auto; /* Centra horizontalmente el cuadro */
     display: flex; /* Alineación interna */
@@ -183,6 +208,13 @@ body {
     width: 45%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.activity-box .btn {
+    margin-bottom: 1rem; /* Agrega margen inferior */
+    padding: 0.7rem 1.5rem; /* Espaciado interno */
+    display: inline-block;
+}
+
 
 /* Margen inferior para los botones de cargar actividades */
 .buttons-container .btn {
@@ -252,6 +284,7 @@ body {
     background-color: #1A252F;
     color: var(--color-blanco);
 }
+
 
 /* Footer */
 .footer {
