@@ -5,6 +5,7 @@
     --color-oscuro: #2C3E50;
     --color-texto: #000;
     --color-blanco: #FFF;
+     --color-titulo: #A67542; /* Marrón principal */
     --color-navbar: #2C3E50; /* Azul oscuro */
     --color-fondobeneficio: #F2E6D8;
 }
@@ -15,11 +16,16 @@
     box-sizing: border-box;
 }
 
+/* Ajuste de márgenes generales */
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Helvetica', Arial, sans-serif;
     background-color: var(--color-secundario);
     color: var(--color-texto);
+    line-height: 1.6;
 }
+
 
 
 .logo {
@@ -149,16 +155,19 @@ body {
     align-items: center;
 }
 
-.nav-links a {
+.nav-links a {  
     text-decoration: none;
     color: var(--color-blanco);
     font-size: 1rem;
     font-weight: bold;
-    transition: color 0.3s ease;
+    padding: 10px 15px; /* Agregar padding para clic más fácil */
+
 }
 
 .nav-links a:hover {
-    color: var(--color-primario);
+    color: var(--color-titulo);
+    
+    
 }
 
 /* Botón de cerrar sesión */
@@ -205,13 +214,9 @@ body {
         text-align: center; /* Centrar texto */
         padding: 10px 0; /* Espaciado interno */
         font-weight: bold; /* Mantener el texto en negrita */
-        color: var(--color-blanco); /* Texto blanco */
-        transition: background-color 0.3s ease; /* Animación suave */
+        
     }
 
-    .nav-links a:hover {
-        background-color: var(--color-primario); /* Fondo marrón claro al pasar el mouse */
-    }
 
     .hamburger-menu {
         display: block; /* Mostrar el icono de menú */
@@ -250,32 +255,100 @@ body {
     flex-wrap: wrap;
 }
 
-/* Ajuste de cada miembro */
 .miembro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--color-primario);
-    border-radius: 12px;
-    padding: 1rem;
-    text-align: center;
     color: var(--color-blanco);
-    width: 200px; /* Misma anchura */
+    padding: 1rem;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Ajustar al ancho deseado */
+    max-width: 500px; /* Ancho máximo del contenedor */
+    margin: 1rem auto; /* Centrado */
 }
 
-/* Redimensionar y alinear imágenes */
-.miembro img {
-    width: 100px; /* Mismo tamaño */
-    height: 100px; /* Mantener un tamaño cuadrado */
-    object-fit: cover; /* Cortar y ajustar las imágenes */
-    border-radius: 50%; /* Forma circular */
-    margin: 0 auto 0.5rem; /* Centrar y dar espacio abajo */
-}
-
-/* Centrar contenedor de "Miembros" */
-.section-miembros {
+.izquierda, .derecha {
+    width: 50%;
     text-align: center;
-    margin: 2rem auto;
-    max-width: 1200px; /* Ajustar ancho máximo */
 }
+
+.izquierda {
+    border-right: 2px solid var(--color-blanco); /* Línea divisoria */
+    padding-right: 1rem; /* Espacio a la derecha */
+}
+
+.derecha {
+    padding-left: 1rem; /* Espacio a la izquierda */
+}
+
+.contactos {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Espacio entre iconos */
+    margin-top: 0.5rem;
+}
+
+.contactos img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.contactos img:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+}
+
+a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: 0.9rem;
+    word-wrap: break-word; /* Ajuste si el correo es muy largo */
+}
+
+.icono {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.icono.whatsapp {
+    background-image: url('png/IconoWhatsApp.png'); /* Ruta a tu ícono de WhatsApp */
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icono.instagram {
+    background-image: url('png/IconoInstagram.png'); /* Ruta a tu ícono de Instagram */
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.correo {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.correo:hover {
+    text-decoration: underline;
+}
+
+
+
 /* Footer */
 .footer {
     text-align: center;
