@@ -7,6 +7,7 @@
     --color-blanco: #FFF; /* Blanco */
     --color-navbar: #2C3E50; /* Azul oscuro */
     --color-fondobeneficio: #F2E6D8; /* Fondo claro */
+    --color-modal: #FAF3E0
 }
 
 /* General Styles */
@@ -18,66 +19,89 @@ body, html {
     color: var(--color-texto);
 }
 
-/* Header Styles */
-.header {
+/* Menú de navegación */
+.navbar {
+    background-color: #2C3E50;
+    color: #FFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: var(--color-navbar); /* Azul oscuro */
-    color: var(--color-blanco); /* Blanco */
-}/* Variables de color */
-:root {
-    --color-primario: #B08968; /* Marrón claro */
-    --color-secundario: #D9C6A5; /* Beige */
-    --color-oscuro: #2C3E50; /* Azul oscuro */
-    --color-texto: #000; /* Negro */
-    --color-blanco: #FFF; /* Blanco */
-    --color-navbar: #2C3E50; /* Azul oscuro */
-    --color-fondobeneficio: #F2E6D8; /* Fondo claro */
+    position: relative; /* Importante para controlar el contenido superpuesto */
+    z-index: 1000; /* Asegúrate de que el menú esté por encima */
 }
 
-/* General Styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica', sans-serif;
-    background-color: var(--color-fondobeneficio);
-    color: var(--color-texto);
-}
-
-/* Header Styles */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--color-navbar); /* Azul oscuro */
-    color: var(--color-blanco); /* Blanco */
-}
-
-.title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Helvetica-Bold';
-}
-
-.menu {
+/* Enlaces de navegación */
+.nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
-    margin: 0;
     padding: 0;
 }
 
-.menu li a {
-    color: var(--color-blanco);
+/* Estilo para enlaces */
+.nav-links a {
     text-decoration: none;
+    color: #FFF;
+    font-size: 1rem;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.menu li a:hover {
-    text-decoration: underline;
+/* Hover para enlaces */
+.nav-links a:hover {
+    color: #B08968;
+}
+
+
+/* Estilo específico para el menú desplegable */
+.nav-links.active a {
+    display: block; /* Asegura que los enlaces sean visibles */
+    width: 100%; /* Ocupan todo el ancho del contenedor */
+    text-align: center; /* Centran el texto */
+}
+
+
+.hamburger-menu img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: none; /* Mostrar solo en pantallas pequeñas */
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Ocultar en dispositivos pequeños */
+        flex-direction: column;
+        background-color: var(--color-navbar);
+        position: absolute;
+        top: 60px; /* Ajustar según la altura de la navbar */
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostrar menú al activarse */
+    }
+
+    .hamburger-menu img {
+        display: block; /* Mostrar en pantallas pequeñas */
+    }
+}
+
+.logo-container img {
+    width: 120px; /* Tamaño pequeño del logo */
+    height: auto;
+    cursor: pointer;
+}
+
+.logout-icon {
+    width: 30px;
+    height: auto;
+    margin-left: 1rem;
+    cursor: pointer;
 }
 
 /* Modal Styles */
@@ -95,7 +119,7 @@ body, html {
 }
 
 .modal-content {
-    background-color: var(--color-secundario);
+    background-color: var(--color-modal);
     padding: 2rem;
     border-radius: 12px;
     width: 400px;
