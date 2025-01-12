@@ -1,26 +1,40 @@
+// Selección del menú de hamburguesa y los enlaces
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+
+// Alternar visibilidad del menú de navegación
+hamburgerMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Cerrar el menú de hamburguesa al hacer clic en un enlace
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// Función para cerrar sesión
+const logoutButton = document.getElementById("logoutButton");
+logoutButton.addEventListener("click", () => {
+    sessionStorage.clear(); // Limpia la sesión
+    window.location.href = "index.html"; // Redirige al inicio de sesión
+});
+
 //Matriz de productos
 const products = [
-    { id: 1, name: "Cuaderno Universitario", description: "Un cuaderno de 100 hojas con el logo de la universidad.", points: 50, image: "png/Producto1.png" },
-    { id: 2, name: "Lápices de Colores", description: "Set de 12 lápices de colores ideales para actividades creativas.", points: 30, image: "png/Producto2.png" },
-    { id: 3, name: "Estuche para Lápices", description: "Un estuche práctico y resistente para guardar lápices y bolígrafos.", points: 40, image: "png/Producto3.png" },
-    { id: 4, name: "Calculadora Básica", description: "Calculadora portátil para realizar operaciones básicas.", points: 100, image: "png/Producto4.png" },
-    { id: 5, name: "Juego de Reglas", description: "Incluye regla, escuadra y transportador para trabajos de geometría.", points: 20, image: "png/Producto5.png" },
-    { id: 6, name: "Bolígrafos Universitarios", description: "Set de 3 bolígrafos con tinta negra y logo de la universidad.", points: 25, image: "png/Producto6.png" },
-    { id: 7, name: "Carpeta de Documentos", description: "Carpeta plástica para mantener tus papeles organizados.", points: 45, image: "png/Producto7.png" },
-    { id: 8, name: "Termo Universitario", description: "Taza con el escudo de la universidad, ideal para el café.", points: 80, image: "png/Producto8.png" },
-    { id: 9, name: "Cuaderno de Notas", description: "Cuaderno pequeño para tomar apuntes en clases o reuniones.", points: 30, image: "png/Producto9.png" },
-    { id: 10, name: "Mochila Universitaria", description: "Mochila sencilla con logo de la universidad.", points: 150, image: "png/Producto10.png" },
-    { id: 11, name: "Gorra Universitaria", description: "Gorra con diseño exclusivo de la universidad.", points: 70, image: "png/Producto11.png" },
-    { id: 12, name: "Marcadores Fluorescentes", description: "Set de 4 marcadores fluorescentes en colores vivos.", points: 35, image: "png/Producto12.png" },
-    { id: 13, name: "Bloc de Notas Adhesivas", description: "Paquete de notas adhesivas para organizar tus tareas.", points: 25, image: "png/Producto13.png" },
-    { id: 14, name: "Lápices Universitarios", description: "Lápiz resistente para uso diario.", points: 40, image: "png/Producto14.png" },
-    { id: 15, name: "Llavero Universitario", description: "Llavero con diseño del logo de la universidad.", points: 20, image: "png/Producto15.png" },
-    { id: 16, name: "Set de Clips y Sujetapapeles", description: "Clips y sujetapapeles para organizar documentos.", points: 15, image: "png/Producto16.png" },
-    { id: 17, name: "Camiseta Universitaria", description: "Camiseta con el logo de la universidad.", points: 120, image: "png/Producto17.png" },
-    { id: 18, name: "Pegatinas Universitarias", description: "Set de pegatinas con diseños relacionados a la universidad.", points: 10, image: "png/Producto18.png" }
+    { id: 1, name: "Camiseta", description: "Camiseta diseñada para ofrecer comodidad y durabilidad en tus actividades diarias.", points: 30, image: "png/Producto1.png" },
+    { id: 2, name: "Bolsas", description: "Lleva todo lo esencial con esta práctica bolsa, ideal para tus materiales u objetos diarios.", points: 70, image: "png/Producto2.png" },
+    { id: 3, name: "Caja de Colores", description: "Conjunto de colores vibrantes, diseñado para apoyar tus actividades creativas y académicas.", points: 30, image: "png/Producto3.png" },
+    { id: 4, name: "Cuaderno", description: "Cuaderno elegante el compañero perfecto para tus ideas y notas. ", points: 50, image: "png/Producto4.png" },
+    { id: 5, name: "Gorra", description: "Gorra resistente y funcional, diseñada para protegerte del sol y complementar tu vestimenta.", points: 70, image: "png/Producto5.png" },
+    { id: 6, name: "Mochila", description: "Mochila diseñada para acompañarte en tu día a día, esta mochila combina funcionalidad, espacio y diseño.", points: 150, image: "png/Producto6.png" },
+    { id: 7, name: "Caja de Notas", description: "Notas adhesivas prácticas, ideales para la organización y resaltar información importante.", points: 25, image: "png/Producto7.png" },
+    { id: 8, name: "Termos", description: "Termo aislante de alto rendimiento, perfecto para mantener la temperatura de tus bebidas.", points: 80, image: "png/Producto8.png" },
+
 ];
 
-const productsPerPage = 6; // Mostrar 6 productos por página
+const productsPerPage = 4; // Mostrar 6 productos por página
 let currentPage = 1;
 
 const productsContainer = document.getElementById("productsContainer");
