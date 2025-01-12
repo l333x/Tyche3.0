@@ -7,43 +7,49 @@
     <link rel="stylesheet" href="css/canjear.css">
 </head>
 <body>
-    <header class="header">
-        <h1 class="title">Tyché</h1>
-        <nav>
-            <ul class="menu">
-                <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="politicas.html">Políticas de Uso</a></li>
-                <li><a href="manual.html">Manual de Uso</a></li>
-                <li><a href="informacion.html">Acerca de Nosotros</a></li>
-                <li><a href="canjear.html">Canjear Recompensas</a></li>
-            </ul>
-        </nav>
-        
-    </header>
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="png/LogoTyche.png" alt="Logo Tyché" class="logo-image">
+        </div>
+        <ul class="nav-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="politicas.html">Políticas de Uso</a></li>
+            <li><a href="manual.html">Manual de Uso</a></li>
+            <li><a href="informacion.html">Acerca de Nosotros</a></li>
+            <li><a href="canjear.html">Canjear Recompensas</a></li>
+        </ul>
+        <img src="png/CerrarSesion.png" class="logout-icon" alt="Cerrar sesión" id="logoutButton">
+        <div class="hamburger-menu">
+            <img src="png/IconoMenu.png" alt="Menú">
+        </div>
+    </nav>
 
+    <!-- Contenido Principal -->
     <main class="main-container">
         <section class="info-section">
-            <h2>¿Qué son los puntos Tyche?</h2>
+            <h2>¿Qué son los puntos Tyche? 🎯</h2>
             <p>
                 Nuestro servicio permite que los estudiantes acumulen puntos por actividades académicas realizadas.  Las actividades deberán haber sido generadas por un docente o administrador en la plataforma de canje Tyché.
-            </p>
-            <h3>¿Cómo funciona el sistema?</h3>
+            <h3>¿Cómo funciona el sistema? 🔄</h3>
             <p>
                 El estudiante va obteniendo puntos en base a las actividades completadas, cuando el administrador verifica el estado de la actividad los puntos empiezan a acumular posteriormente se podrán canjear las recompensas.
             </p>
         </section>
 
         <section class="catalog-section">
-            <h2>Catálogo de productos</h2>
+            <h2>🛍️ Catálogo de productos 🛍️</h2>
             <div class="products-container" id="productsContainer">
                 <!-- Productos generados dinámicamente -->
             </div>
             <div class="pagination">
-                <button class="btn" id="prevButton">Anterior</button>
-                <button class="btn" id="nextButton">Siguiente</button>
+                <button class="btn" id="prevButton">◀️ Anterior</button>
+                <button class="btn" id="nextButton">Siguiente ▶️</button>
             </div>
         </section>
     </main>
+
+    <!-- Modal -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
@@ -54,7 +60,6 @@
             <button id="redeemButton">Canjear</button>
         </div>
     </div>
-    
 
     <footer class="footer">
         <p>&copy; 2024 Tyche. Transformando el esfuerzo en recompensas.</p>
