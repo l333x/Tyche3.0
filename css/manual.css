@@ -28,6 +28,33 @@ body {
     line-height: 1.6;
 }
 
+.download-button {
+    display: inline-flex; /* Permite alinear contenido como en un botón */
+    align-items: center; /* Centra verticalmente el texto y los iconos */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #2C3E50; /* Color de fondo oscuro */
+    color: #FFFFFF; /* Color del texto */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    text-decoration: none; /* Elimina subrayado del enlace */
+    border-radius: 12px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Efecto suave en hover */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Añade una sombra */
+}
+
+.download-button:hover {
+    background-color: #34495E; /* Cambia el color del fondo al pasar el mouse */
+}
+
+.download-button img {
+    margin-left: 10px; /* Espaciado entre texto e icono */
+    width: 20px; /* Tamaño del icono */
+    height: 20px; /* Proporción del icono */
+}
+
+
 /* Encabezado */
 .header {
     background-color: var(--color-navbar);
