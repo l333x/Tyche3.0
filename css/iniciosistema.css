@@ -1,40 +1,265 @@
 :root {
-    --color-principal: #B08968; /* Marrón claro */
+    :root {
+        --color-primario: #A17F5E; /* Marrón claro ajustado */
+        --color-secundario: #D9C6A5; /* Beige claro */
+        --color-oscuro: #5C4938; /* Marrón oscuro suave */
+        --color-texto: #3F3225; /* Marrón más oscuro para texto */
+        --color-blanco: #F4EDE4; /* Blanco cálido */
+        --color-navbar: #5C4938; /* Marrón oscuro para barra de navegación */
+        --color-fondobeneficio: #E8D6C3; /* Fondo beige claro */
+        --color-boton: #8C6239; /* Marrón medio para botones */
+        --color-hover-boton: #5C4938; /* Marrón más oscuro para hover en botones */
+        --color-borde: #BFA487; /* Marrón claro para bordes */
+    }
+    
+
+
+    --color-principal: #A17F5E; /* Marrón oscuro */
     --color-secundario: #D9C6A5; /* Beige */
-    --color-fondo: rgba(0, 0, 0, 0.6); 
+    --color-fondo: #1C2833; /* Azul oscuro */
+    
     --color-texto: #FFFFFF; /* Blanco */
-    --color-borde-boton: #2C3E50; /* Marrón oscuro */
-    --color-fondobeneficio: #F2E6D8; /* Fondo beige */
+    --color-borde-boton: #1C2833; /* Azul oscuro */
+    --color-fondobeneficio: #E8D6C3; /* Beige claro */
 }
+
 
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Helvetica', Arial, sans-serif;
     color: #333;
-    background-color: var(--color-principal); /* Fondo principal */
+    background-color: var(--color-secundario); /* Fondo principal */
     box-sizing: border-box;
     padding: 1rem; /* Margen interno uniforme */
 }
-/* Hero Section */
-.hero-section {
-    background: url('../png/Foto2.png') no-repeat center center/cover;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 2.5rem; /* Incrementar el margen inferior */
-}
 
 
 
+/* Overlay para centrar contenido */
 .overlay {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     border-radius: 12px;
     width: 60%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    margin: auto;
+    margin-bottom: 2rem; /* Margen adicional debajo del overlay */
+}
+
+
+/* Imagen centrada */
+.overlay .logo {
+    max-width: 100%;
+    height: auto; /* Mantener proporción */
+    max-height: 200px; /* Limitar altura */
+    margin-bottom: 1.5rem; /* Separar de otros elementos */
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px; /* Limitar altura para evitar distorsión */
+    margin-bottom: 1rem; /* Espaciado debajo de la imagen */
+}
+
+
+/* Sección de catálogo */
+.catalog-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-primario); /* Fondo beige claro */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.catalog-section h2 {
+    color: var(--color-primario);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.products-container {
+    color: var(--color-secundario);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 1rem;
+}
+
+.product-card {
+    background-color: var(--color-secundario);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 180px; /* Aumentar el tamaño */
+    height: 180px; /* Mantener proporción */
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease; /* Animación al pasar el mouse */
+}
+
+.product-card img:hover {
+    transform: scale(1.5); /* Efecto de zoom */
+}
+
+
+.product-card button {
+    background-color: var(--color-secundario);
+    color: var(--color-secundario);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: var(--color-secundario);
+}
+
+/* Paginación */
+.pagination {
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+}
+
+.pagination .btn {
+    background-color: var(--color-fondo);
+
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.pagination .btn:hover {
+    background-color: var(--color-oscuro);
+}
+
+
+
+.chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Tamaño del botón */
+    height: 70px; /* Tamaño del botón */
+    background-color: var(--color-secundario); /* Usa el color beige de tu página */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
+    z-index: 1000; /* Asegúrate de que esté encima del contenido */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.chatbot-button:hover {
+    transform: scale(2.5); /* Aumenta el tamaño al pasar el mouse */
+    background-color: var(--color-borde-boton); /* Cambia el color al pasar el mouse */
+}
+
+.chatbot-button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.chatbot-icon {
+    width: 70px; /* Tamaño del ícono dentro del botón */
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Estilo del modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--color-fondobeneficio);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content img {
+    width: 250px; /* Aumentar tamaño */
+    height: 250px; /* Mantener proporción */
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+
+.modal-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primario);
+}
+
+.modal-content p {
+    margin: 0.5rem 0;
+}
+
+.modal-content button {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: var(--color-oscuro);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-oscuro);
 }
 
 .title {
@@ -49,6 +274,21 @@ body, html {
     color: var(--color-texto);
     font-weight: bold;
 }
+.catalog-section {
+    text-align: center;
+    margin-bottom: 2rem; /* Margen adicional para evitar colisión */
+    padding: 2rem;
+    background-color: var(--color-principal); /* Fondo azul oscuro */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.product-card h3 {
+    color: var(--color-fondo); /* Cambiar color del texto */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 
 /* Botones */
 .btn {
@@ -59,7 +299,7 @@ body, html {
     color: var(--color-secundario);
     border: 2px solid var(--color-borde-boton);
     border-radius: 30px;
-    background-color: var(--color-principal);
+    background-color: var(--color-borde-boton);
     text-align: center;
     transition: all 0.3s ease-in-out;
     margin: 1rem auto;
@@ -74,7 +314,7 @@ body, html {
 
 /* Contenedor de Secciones */
 .section-container {
-    background-color: var(--color-secundario);
+    background-color: var(  --color-principal);
     padding: 2rem;
     margin: 1.5rem auto; /* Reducir margen superior e inferior */
     border-radius: 12px;
@@ -86,7 +326,7 @@ body, html {
 
 
 .section-container h2, .section-container h3 {
-    color: var(--color-principal);
+    color: var(-color-fondo);
     text-align: center;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -202,9 +442,16 @@ body, html {
     color: var(--color-principal);
 }
 
+
+
+
+
+
+
+
 .info-box {
     flex: 1;
-    background-color: var(--color-secundario); /* Fondo beige */
+    background-color: var(--color-principal); /* Fondo beige */
     padding: 2rem;
     border-radius: 12px;
     text-align: center; /* Texto justificado */
