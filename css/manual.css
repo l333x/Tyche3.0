@@ -1,274 +1,335 @@
-@font-face {
-    font-family: 'Helvetica';
-    src: local('Helvetica');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'Helvetica-Bold';
-    src: local('Helvetica-Bold');
-    font-weight: bold;
-}
-
+/* Variables de color */
 :root {
-    --color-fondo: #F5E6CC; /* Beige claro */
-    --color-texto: #2C3E50; /* Azul oscuro */
-    --color-titulo: #A67542; /* Marrón principal */
+    --color-primario: #8C6239; /* Marrón claro */
+    --color-secundario: #B89F7C; /* Beige */
+    --color-oscuro: #2C3E50; /* Azul oscuro */
+    --color-texto: #000; /* Negro */
+    --color-blanco: #FFF; /* Blanco */
     --color-navbar: #2C3E50; /* Azul oscuro */
-    --color-blanco: #FFFFFF;
-    --color-card-fondo: #D9C2A6; /* Beige intermedio */
+    --color-fondobeneficio: #F2E6D8; /* Fondo claro */
+    --color-modal: #FAF3E0
 }
 
-body {
+/* General Styles */
+body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica', Arial, sans-serif;
-    background-color: var(--color-fondo);
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-secundario);
     color: var(--color-texto);
-    line-height: 1.6;
-}
-
-.download-button {
-    display: inline-flex; /* Permite alinear contenido como en un botón */
-    align-items: center; /* Centra verticalmente el texto y los iconos */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    padding: 10px 20px; /* Espaciado interno */
-    background-color: #2C3E50; /* Color de fondo oscuro */
-    color: #FFFFFF; /* Color del texto */
-    font-size: 16px; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
-    text-decoration: none; /* Elimina subrayado del enlace */
-    border-radius: 12px; /* Bordes redondeados */
-    transition: background-color 0.3s ease; /* Efecto suave en hover */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Añade una sombra */
-}
-
-.download-button:hover {
-    background-color: #34495E; /* Cambia el color del fondo al pasar el mouse */
-}
-
-.download-button img {
-    margin-left: 10px; /* Espaciado entre texto e icono */
-    width: 20px; /* Tamaño del icono */
-    height: 20px; /* Proporción del icono */
-}
-
-
-/* Encabezado */
-.header {
-    background-color: var(--color-navbar);
-    color: var(--color-blanco);
-    text-align: center;
-    padding: 1.5rem 0;
-    font-family: 'Helvetica-Bold';
-    font-size: 2rem;
-}
-
-/* Contenido Principal */
-.content {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: var(--color-blanco);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-h2 {
-    color: var(--color-titulo);
-    font-family: 'Helvetica-Bold';
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-h3, h4 {
-    color: var(--color-texto);
-    font-family: 'Helvetica-Bold';
-    margin-top: 1rem;
-    font-size: 1.4rem;
-}
-
-p {
-    text-align: justify;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-ul {
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-ul li {
-    margin-bottom: 0.5rem;
-}
-
-strong {
-    color: var(--color-titulo);
-}
-
-/* Menú de Navegación */
-.navbar {
-    background-color: var(--color-navbar);
-    color: var(--color-blanco);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    padding: 0;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--color-blanco);
-    font-size: 1rem;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--color-titulo);
 }
 
 /* Menú de navegación */
 .navbar {
-    background-color: var(--color-navbar);
-    color: var(--color-blanco);
+    background-color: #2C3E50;
+    color: #FFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    position: relative;
-    z-index: 1000;
+    position: relative; /* Importante para controlar el contenido superpuesto */
+    z-index: 1000; /* Asegúrate de que el menú esté por encima */
 }
 
+/* Enlaces de navegación */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
     padding: 0;
-    align-items: center;
 }
 
+/* Estilo para enlaces */
 .nav-links a {
     text-decoration: none;
-    color: var(--color-blanco);
+    color: #FFF;
     font-size: 1rem;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
+/* Hover para enlaces */
 .nav-links a:hover {
-    color: var(--color-titulo);
+    color: #B08968;
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 2rem;
-    color: var(--color-titulo);
+
+/* Estilo específico para el menú desplegable */
+.nav-links.active a {
+    display: block; /* Asegura que los enlaces sean visibles */
+    width: 100%; /* Ocupan todo el ancho del contenedor */
+    text-align: center; /* Centran el texto */
 }
 
-/* Estilos del botón de cerrar sesión */
-.logout-icon {
-    width: 30px;
-    height: auto;
-    cursor: pointer;
-    margin-left: 1rem;
-}
-
-/* Menú de hamburguesa */
-.hamburger-menu {
-    display: none;
-    cursor: pointer;
-}
 
 .hamburger-menu img {
     width: 30px;
     height: 30px;
+    cursor: pointer;
+    display: none; /* Mostrar solo en pantallas pequeñas */
 }
 
-/* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: none; /* Ocultar en dispositivos pequeños */
         flex-direction: column;
         background-color: var(--color-navbar);
         position: absolute;
-        top: 60px;
-        right: 10px;
+        top: 60px; /* Ajustar según la altura de la navbar */
+        left: 0;
         width: 100%;
-        padding: 10px 0;
-        border-radius: 5px;
+        padding: 1rem;
         z-index: 1000;
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex; /* Mostrar menú al activarse */
     }
 
-    .nav-links a {
-        text-align: center;
-        padding: 10px 0;
-        font-weight: bold; /* Mantener negrita */
-    }
-
-    .hamburger-menu {
-        display: block;
+    .hamburger-menu img {
+        display: block; /* Mostrar en pantallas pequeñas */
     }
 }
 
-/* Contenedor del logo */
-.logo-container {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem; /* Ajusta el espacio entre el logo y el menú */
-}
-
-/* Imagen del logo */
-.logo-image {
-    max-width: 120px; /* Define el ancho máximo */
-    height: auto; /* Mantén la proporción de la imagen */
+.logo-container img {
+    width: 120px; /* Tamaño pequeño del logo */
+    height: auto;
     cursor: pointer;
-    margin-right: 1rem; /* Espacio entre el logo y el menú */
 }
 
-/* Cartas de Sección */
-.section-dual {
+.logout-icon {
+    width: 30px;
+    height: auto;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--color-modal);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.modal-content h3 {
+    font-family: 'Helvetica-Bold';
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    margin: 0.5rem 0;
+    color: var(--color-texto);
+}
+
+.modal-content button {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Helvetica-Bold';
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: var(--color-oscuro);
+}
+
+
+.chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Tamaño del botón */
+    height: 70px; /* Tamaño del botón */
+    background-color: var(--color-secundario); /* Usa el color beige de tu página */
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 2rem;
-    background-color: var(--color-card-fondo);
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
+    z-index: 1000; /* Asegúrate de que esté encima del contenido */
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.card {
-    background-color: var(--color-blanco);
-    color: var(--color-texto);
-    padding: 1.5rem;
+.chatbot-button:hover {
+    transform: scale(2.5); /* Aumenta el tamaño al pasar el mouse */
+    background-color: var(--color-oscuro); /* Cambia el color al pasar el mouse */
+}
+
+.chatbot-button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.chatbot-icon {
+    width: 70px; /* Tamaño del ícono dentro del botón */
+    height: 40px;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-oscuro);
+}
+
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Container */
+.main-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Info Section */
+.info-section {
     text-align: center;
-    border-radius: 10px;
-    width: 45%;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--color-fondobeneficio); /* Beige */
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card h2 {
-    color: var(--color-titulo);
-    font-size: 1.5rem;
+.info-section h2, .info-section h3 {
+    color: var(--color-primario); /* Marrón claro */
+}
+
+/* Catalog Section */
+.catalog-section {
+    text-align: center;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.product-card {
+    width: 200px;
+    padding: 1rem;
+    background-color: var(--color-blanco); /* Blanco */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    color: var(--color-texto); /* Negro */
+}
+
+.product-card button {
+    background-color: var(--color-primario); /* Marrón claro */
+    color: var(--color-blanco); /* Blanco */
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+    background-color: var(--color-oscuro); /* Azul oscuro */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    background-color: var(--color-primario); /* Marrón claro */
+    color: var(--color-blanco); /* Blanco */
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--color-oscuro); /* Azul oscuro */
 }
 
 /* Footer */
 .footer {
     text-align: center;
     padding: 1rem;
-    background-color: var(--color-navbar);
-    color: var(--color-blanco);
+    background-color: var(--color-navbar); /* Azul oscuro */
+    color: var(--color-blanco); /* Blanco */
     margin-top: 2rem;
     font-family: 'Helvetica-Bold';
 }
