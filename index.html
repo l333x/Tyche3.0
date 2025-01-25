@@ -8,16 +8,41 @@
 </head>
 <body>
     <!-- Encabezado Principal -->
-    <section class="hero-section">
-        <div class="overlay">
-            <h1 class="title">TYCHÉ</h1>
-            <p class="subtitle">Transforma tu esfuerzo en recompensas con Tyché</p>
-            <div class="button-container">
-                <a href="#" class="btn" id="openRegisterModal"> 🖊️ Registrarse 🖊️</a>
-                <a href="#" class="btn" id="openLoginModal"> 🔓 Iniciar Sesión 🔓</a>
-            </div>
+    
+    <div class="overlay">
+        <img src="png/LogoInicioSistema.png" alt="Logo de Tyché" class="logo">
+        <p class="subtitle">Transforma tu esfuerzo en recompensas con Tyché</p>
+        <div class="button-container">
+            <a href="#" class="btn" id="openRegisterModal">Registrarse</a>
+            <a href="#" class="btn" id="openLoginModal">Iniciar Sesión</a>
         </div>
-    </section>
+    </div>
+    
+    <!-- Catálogo de productos -->
+<section class="catalog-section">
+    <h2>🛍️ Catálogo de productos 🛍️</h2>
+    <div class="products-container" id="productsContainer">
+        <!-- Productos generados dinámicamente -->
+    </div>
+    <div class="pagination">
+        <button class="btn" id="prevButton">◀️ Anterior</button>
+        <button class="btn" id="nextButton">Siguiente ▶️</button>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <img id="modalImage" src="" alt="Producto">
+        <h3 id="modalTitle">Título del Producto</h3>
+        <p id="modalDescription">Descripción breve del producto.</p>
+        <p id="modalPoints">Puntos necesarios: <span id="pointsNeeded">0</span></p>
+        <button id="redeemButton">Canjear</button>
+    </div>
+</div>
+
+    
 
     <!-- Sección "Conozca Tyche" -->
     <div class="horizontal-container">
@@ -72,31 +97,31 @@
         <div class="modal-content">
             <span class="close-btn" id="closeRegisterModal">&times;</span>
             <h2>Registrarse</h2>
-            <form id="registerForm">
+            <form id="registerForm" method="POST">
                 <label for="cedula">Cédula:</label>
-                <input type="text" id="cedula" required>
-
+                <input type="text" id="cedula" name="cedula" required>
+            
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" required>
-
+                <input type="text" id="nombre" name="nombre" required>
+            
                 <label for="apellidos">Apellidos:</label>
-                <input type="text" id="apellidos" required>
-
-                 <!-- Reemplazo del input de carrera por un combobox -->
-            <label for="carrera">Carrera:</label>
-            <select id="carrera" required>
-                <option value="" disabled selected>Seleccione una carrera</option>
-                <option value="Negocios Digitales">Negocios Digitales</option>
-                <option value="Psicología">Psicología</option>
-                <option value="Odontología">Odontología</option>
-                <option value="Derecho">Derecho</option>
-                <option value="Administración de Empresas">Administración de Empresas</option>
-                <option value="Arquitectura">Arquitectura</option>
-                <option value="Comunicación">Comunicación</option>
-            </select>
-
+                <input type="text" id="apellidos" name="apellidos" required>
+            
+                <label for="carrera">Carrera:</label>
+                <select id="carrera" name="carrera" required>
+                    <option value="" disabled selected>Seleccione una carrera</option>
+                    <option value="Negocios Digitales">Negocios Digitales</option>
+                    <option value="Psicología">Psicología</option>
+                    <option value="Odontología">Odontología</option>
+                    <option value="Derecho">Derecho</option>
+                    <option value="Administración de Empresas">Administración de Empresas</option>
+                    <option value="Arquitectura">Arquitectura</option>
+                    <option value="Comunicación">Comunicación</option>
+                </select>
+            
                 <button type="submit" class="btn">Guardar</button>
             </form>
+            
         </div>
     </div>
 
@@ -114,10 +139,20 @@
         </div>
     </div>
 
+    <div class="chatbot-button">
+        <a href="https://landbot.online/v3/H-2759011-DKIYO8EIFF7YG1DN/index.html" target="_blank">
+            <img src="png/BotIcon.png" alt="Chatbot" class="chatbot-icon">
+        </a>
+    </div>
+    
+
     <script src="js/iniciosistema.js"></script>
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Tyché. ¡Transforma tu esfuerzo en recompensas con Tyché!</p>
     </footer>
+    
 </body>
+
+
 </html>
