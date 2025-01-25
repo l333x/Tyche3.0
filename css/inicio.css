@@ -1,11 +1,12 @@
 :root {
-    --color-principal: #A67542;  /* Marrón principal */
-    --color-secundario: #F2E6D8; /* Beige claro */
-    --color-acento: #2C3E50;     /* Azul oscuro */
-    --color-texto: #2C3E50;      /* Texto principal azul oscuro */
-    --color-fondo: #CBB78C;      /* Beige intermedio */
+    --color-principal: #8C6239;  /* Marrón principal oscuro */
+    --color-secundario: #D9C6A5; /* Beige claro */
+    --color-acento: #1C2833;     /* Azul oscuro (acento) */
+    --color-texto: #1C2833;      /* Texto principal azul oscuro */
+    --color-fondo:  #B89F7C;      /* Beige intermedio */
     --color-blanco: #FFFFFF;     /* Blanco */
 }
+
 
 body {
     margin: 0;
@@ -15,6 +16,42 @@ body {
     color: var(--color-texto);
     line-height: 1.6;
 }
+.chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Tamaño del botón */
+    height: 70px; /* Tamaño del botón */
+    background-color: var(--color-secundario); /* Usa el color beige de tu página */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
+    z-index: 1000; /* Asegúrate de que esté encima del contenido */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.chatbot-button:hover {
+    transform: scale(2.5); /* Aumenta el tamaño al pasar el mouse */
+    background-color: var(--color-texto); /* Cambia el color al pasar el mouse */
+}
+
+.chatbot-button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.chatbot-icon {
+    width: 70px; /* Tamaño del ícono dentro del botón */
+    height: 40px;
+    object-fit: contain;
+}
+
 
 /* Menú de Navegación */
 .navbar {
