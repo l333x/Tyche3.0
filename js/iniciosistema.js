@@ -135,3 +135,169 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         alert("Cédula incorrecta. Intenta de nuevo.");
     }
 });
+
+//Enviar datos a la base de datos
+// Función para enviar los datos del formulario al servidor
+document.getElementById('registerForm').addEventListener('submit', async function (e) {
+    e.preventDefault(); // Prevenir el envío del formulario estándar
+
+    const formData = new FormData(this);
+
+    // Enviar los datos al servidor
+    const response = await fetch('js/registro.php', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (response.ok) {
+        alert('Datos guardados correctamente.');
+        //loadData(); // Recargar los datos después de guardar
+    } else {
+        alert('Error al guardar los datos.');
+    }
+
+    this.reset(); // Limpiar el formulario
+});
+
+// Datos de productos
+const products = [
+    
+    { id: 2, name: "Bolsas", description: "Lleva todo lo esencial con esta práctica bolsa, ideal para tus materiales u objetos diarios.", points: 70, image: "png/Producto2.png" },
+    
+    { id: 4, name: "Cuaderno", description: "Cuaderno elegante el compañero perfecto para tus ideas y notas. ", points: 50, image: "png/Producto4.png" },
+    { id: 5, name: "Gorra", description: "Gorra resistente y funcional, diseñada para protegerte del sol y complementar tu vestimenta.", points: 70, image: "png/Producto5.png" },
+    
+    { id: 8, name: "Termos", description: "Termo aislante de alto rendimiento, perfecto para mantener la temperatura de tus bebidas.", points: 80, image: "png/Producto8.png" },
+
+];
+
+const productsPerPage = 4; // Productos por página
+let currentPage = 1;
+
+const productsContainer = document.getElementById("productsContainer");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+// Renderizar productos en la página actual
+function renderProducts(page) {
+    productsContainer.innerHTML = "";
+    const start = (page - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    const currentProducts = products.slice(start, end);
+
+    currentProducts.forEach((product) => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+        productCard.innerHTML = `
+            <button class="product-button" data-id="${product.id}">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+            </button>
+        `;
+        productsContainer.appendChild(productCard);
+    });
+
+    prevButton.disabled = page === 1;
+    nextButton.disabled = end >= products.length;
+}
+
+function renderProducts(page) {
+    productsContainer.innerHTML = "";
+    const start = (page - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    const currentProducts = products.slice(start, end);
+
+    currentProducts.forEach((product) => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+        productCard.innerHTML = `
+            <button class="product-button" data-id="${product.id}">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+            </button>
+        `;
+        productsContainer.appendChild(productCard);
+    });
+
+    prevButton.disabled = page === 1;
+    nextButton.disabled = end >= products.length;
+}
+
+// Cambiar el evento de clic para abrir el modal al hacer clic en el producto
+document.addEventListener("click", (event) => {
+    if (event.target.closest(".product-button")) {
+        const productId = parseInt(event.target.closest(".product-button").getAttribute("data-id"));
+        const product = products.find((p) => p.id === productId);
+
+        // Configurar el contenido del modal
+        modalImage.src = product.image;
+        modalTitle.textContent = product.name;
+        modalDescription.textContent = product.description;
+        modalPoints.textContent = product.points;
+        modal.style.display = "flex";
+    }
+});
+
+
+// Botones de navegación
+prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        renderProducts(currentPage);
+    }
+});
+
+nextButton.addEventListener("click", () => {
+    if (currentPage * productsPerPage < products.length) {
+        currentPage++;
+        renderProducts(currentPage);
+    }
+});
+
+// Inicializar renderizado
+renderProducts(currentPage);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("productModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalPoints = document.getElementById("pointsNeeded");
+    const redeemButton = document.getElementById("redeemButton");
+
+    const whatsappNumber = "593995866394"; // Cambia por tu número de WhatsApp
+
+    document.addEventListener("click", (event) => {
+        if (event.target.classList.contains("redeem-btn")) {
+            const productId = parseInt(event.target.getAttribute("data-id"));
+            const product = products.find((p) => p.id === productId);
+
+            // Configurar el contenido del modal
+            modalImage.src = product.image;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            modalPoints.textContent = product.points;
+            modal.style.display = "flex";
+
+            // Configurar el botón de canjear
+            redeemButton.onclick = () => {
+                const message = `Hola, deseo canjear este producto: ${product.name}. ¡Gracias!`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappLink, "_blank");
+            };
+        }
+    });
+
+    // Cerrar el modal
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
