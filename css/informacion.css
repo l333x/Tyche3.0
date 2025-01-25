@@ -1,13 +1,13 @@
 /* Variables de color */
 :root {
-    --color-primario: #B08968;
-    --color-secundario: #D9C6A5;
-    --color-oscuro: #2C3E50;
-    --color-texto: #000;
-    --color-blanco: #FFF;
-     --color-titulo: #A67542; /* Marrón principal */
-    --color-navbar: #2C3E50; /* Azul oscuro */
-    --color-fondobeneficio: #F2E6D8;
+    --color-primario: #8C6239; /* Marrón oscuro principal */
+    --color-secundario: #D9C6A5; /* Beige claro */
+    --color-oscuro: #1C2833; /* Azul oscuro */
+    --color-texto: #1C2833; /* Azul oscuro para texto */
+    --color-blanco: #FFFFFF; /* Blanco */
+    --color-titulo: #8C6239; /* Marrón principal */
+    --color-navbar: #1C2833; /* Azul oscuro para la barra de navegación */
+    --color-fondobeneficio: #E8DCC3; /* Beige claro para beneficios */
 }
 
 /* Reset de estilos generales */
@@ -25,7 +25,77 @@ body {
     color: var(--color-texto);
     line-height: 1.6;
 }
+.section-principal {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--color-secundario); /* Fondo beige claro */
+    position: relative; /* Necesario para posicionar el overlay */
+}
 
+.section-principal .overlay {
+    background-color: rgba(28, 40, 51, 0.9); /* Fondo azul oscuro con transparencia */
+    color: var(--color-blanco); /* Texto en blanco */
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto; /* Centra el overlay horizontalmente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+}
+
+.section-principal .overlay h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--color-primario); /* Marrón oscuro para resaltar */
+}
+
+.section-principal .overlay h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--color-blanco);
+}
+
+.section-principal .overlay p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--color-blanco);
+}
+
+.chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px; /* Tamaño del botón */
+    height: 70px; /* Tamaño del botón */
+    background-color: var(--color-secundario); /* Usa el color beige de tu página */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
+    z-index: 1000; /* Asegúrate de que esté encima del contenido */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.chatbot-button:hover {
+    transform: scale(2.5); /* Aumenta el tamaño al pasar el mouse */
+    background-color: var(--color-texto); /* Cambia el color al pasar el mouse */
+}
+
+.chatbot-button a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.chatbot-icon {
+    width: 70px; /* Tamaño del ícono dentro del botón */
+    height: 40px;
+    object-fit: contain;
+}
 
 
 .logo {
