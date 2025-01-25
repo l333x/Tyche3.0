@@ -1,335 +1,126 @@
-/* Variables de color */
-:root {
-    --color-primario: #8C6239; /* Marrón claro */
-    --color-secundario: #B89F7C; /* Beige */
-    --color-oscuro: #2C3E50; /* Azul oscuro */
-    --color-texto: #000; /* Negro */
-    --color-blanco: #FFF; /* Blanco */
-    --color-navbar: #2C3E50; /* Azul oscuro */
-    --color-fondobeneficio: #F2E6D8; /* Fondo claro */
-    --color-modal: #FAF3E0
+// Selección del menú de hamburguesa y los enlaces
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+
+// Alternar visibilidad del menú de navegación
+hamburgerMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Cerrar el menú de hamburguesa al hacer clic en un enlace
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// Función para cerrar sesión
+const logoutButton = document.getElementById("logoutButton");
+logoutButton.addEventListener("click", () => {
+    sessionStorage.clear(); // Limpia la sesión
+    window.location.href = "index.html"; // Redirige al inicio de sesión
+});
+
+//Matriz de productos
+const products = [
+    { id: 1, name: "Camiseta", description: "Camiseta diseñada para ofrecer comodidad y durabilidad en tus actividades diarias.", points: 30, image: "png/Producto1.png" },
+    { id: 2, name: "Bolsas", description: "Lleva todo lo esencial con esta práctica bolsa, ideal para tus materiales u objetos diarios.", points: 70, image: "png/Producto2.png" },
+    { id: 3, name: "Caja de Colores", description: "Conjunto de colores vibrantes, diseñado para apoyar tus actividades creativas y académicas.", points: 30, image: "png/Producto3.png" },
+    { id: 4, name: "Cuaderno", description: "Cuaderno elegante el compañero perfecto para tus ideas y notas. ", points: 50, image: "png/Producto4.png" },
+    { id: 5, name: "Gorra", description: "Gorra resistente y funcional, diseñada para protegerte del sol y complementar tu vestimenta.", points: 70, image: "png/Producto5.png" },
+    { id: 6, name: "Mochila", description: "Mochila diseñada para acompañarte en tu día a día, esta mochila combina funcionalidad, espacio y diseño.", points: 150, image: "png/Producto6.png" },
+    { id: 7, name: "Caja de Notas", description: "Notas adhesivas prácticas, ideales para la organización y resaltar información importante.", points: 25, image: "png/Producto7.png" },
+    { id: 8, name: "Termos", description: "Termo aislante de alto rendimiento, perfecto para mantener la temperatura de tus bebidas.", points: 80, image: "png/Producto8.png" },
+
+];
+
+const productsPerPage = 4; // Mostrar 6 productos por página
+let currentPage = 1;
+
+const productsContainer = document.getElementById("productsContainer");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+// Renderizar productos
+function renderProducts(page) {
+    productsContainer.innerHTML = "";
+    const start = (page - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    const currentProducts = products.slice(start, end);
+
+    currentProducts.forEach((product, index) => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <button class="redeem-btn" data-index="${start + index}">Canjear</button>
+        `;
+        productsContainer.appendChild(productCard);
+    });
+
+    // Deshabilitar botones si es el inicio o el final
+    prevButton.disabled = page === 1;
+    nextButton.disabled = end >= products.length;
 }
 
-/* General Styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: var(--color-secundario);
-    color: var(--color-texto);
-}
-
-/* Menú de navegación */
-.navbar {
-    background-color: #2C3E50;
-    color: #FFF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    position: relative; /* Importante para controlar el contenido superpuesto */
-    z-index: 1000; /* Asegúrate de que el menú esté por encima */
-}
-
-/* Enlaces de navegación */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    padding: 0;
-}
-
-/* Estilo para enlaces */
-.nav-links a {
-    text-decoration: none;
-    color: #FFF;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-/* Hover para enlaces */
-.nav-links a:hover {
-    color: #B08968;
-}
-
-
-/* Estilo específico para el menú desplegable */
-.nav-links.active a {
-    display: block; /* Asegura que los enlaces sean visibles */
-    width: 100%; /* Ocupan todo el ancho del contenedor */
-    text-align: center; /* Centran el texto */
-}
-
-
-.hamburger-menu img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    display: none; /* Mostrar solo en pantallas pequeñas */
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Ocultar en dispositivos pequeños */
-        flex-direction: column;
-        background-color: var(--color-navbar);
-        position: absolute;
-        top: 60px; /* Ajustar según la altura de la navbar */
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-        z-index: 1000;
+// Paginación
+prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        renderProducts(currentPage);
     }
+});
 
-    .nav-links.active {
-        display: flex; /* Mostrar menú al activarse */
+nextButton.addEventListener("click", () => {
+    if (currentPage * productsPerPage < products.length) {
+        currentPage++;
+        renderProducts(currentPage);
     }
+});
 
-    .hamburger-menu img {
-        display: block; /* Mostrar en pantallas pequeñas */
-    }
-}
+// Inicializar Renderizado
+renderProducts(currentPage);
 
-.logo-container img {
-    width: 120px; /* Tamaño pequeño del logo */
-    height: auto;
-    cursor: pointer;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("productModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalPoints = document.getElementById("pointsNeeded");
+    const redeemButton = document.getElementById("redeemButton");
 
-.logout-icon {
-    width: 30px;
-    height: auto;
-    margin-left: 1rem;
-    cursor: pointer;
-}
+    const whatsappNumber = "593995866394"; // Cambia por tu número de WhatsApp
 
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
+    document.addEventListener("click", (event) => {
+        if (event.target.classList.contains("redeem-btn")) {
+            const productIndex = event.target.getAttribute("data-index");
+            const product = products[productIndex];
 
-.modal-content {
-    background-color: var(--color-modal);
-    padding: 2rem;
-    border-radius: 12px;
-    width: 400px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+            modalImage.src = product.image;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            modalPoints.textContent = product.points;
+            modal.style.display = "flex";
 
-.modal-content img {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-}
+            // Configurar el botón de canjear
+            redeemButton.onclick = () => {
+                const message = `Vengo de Tyché, deseo canjear este producto: ${product.name}. Espero la confirmación muchas gracias.`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                window.open(whatsappLink, "_blank"); // Redirigir a WhatsApp
+            };
+        }
+    });
 
-.modal-content h3 {
-    font-family: 'Helvetica-Bold';
-    font-size: 1.5rem;
-    color: var(--color-primario);
-    margin-bottom: 1rem;
-}
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
 
-.modal-content p {
-    margin: 0.5rem 0;
-    color: var(--color-texto);
-}
-
-.modal-content button {
-    background-color: var(--color-primario);
-    color: var(--color-blanco);
-    border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Helvetica-Bold';
-    margin-top: 1rem;
-    transition: background-color 0.3s;
-}
-
-.modal-content button:hover {
-    background-color: var(--color-oscuro);
-}
-
-
-.chatbot-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 70px; /* Tamaño del botón */
-    height: 70px; /* Tamaño del botón */
-    background-color: var(--color-secundario); /* Usa el color beige de tu página */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra del botón */
-    z-index: 1000; /* Asegúrate de que esté encima del contenido */
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.chatbot-button:hover {
-    transform: scale(2.5); /* Aumenta el tamaño al pasar el mouse */
-    background-color: var(--color-oscuro); /* Cambia el color al pasar el mouse */
-}
-
-.chatbot-button a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-}
-
-.chatbot-icon {
-    width: 70px; /* Tamaño del ícono dentro del botón */
-    height: 40px;
-    object-fit: contain;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--color-oscuro);
-}
-
-
-.title {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-}
-
-.menu li a {
-    color: var(--color-blanco);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.menu li a:hover {
-    text-decoration: underline;
-}
-
-/* Main Container */
-.main-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Info Section */
-.info-section {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: var(--color-fondobeneficio); /* Beige */
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.info-section h2, .info-section h3 {
-    color: var(--color-primario); /* Marrón claro */
-}
-
-/* Catalog Section */
-.catalog-section {
-    text-align: center;
-}
-
-.products-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.product-card {
-    width: 200px;
-    padding: 1rem;
-    background-color: var(--color-blanco); /* Blanco */
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.product-card img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 1rem;
-}
-
-.product-card h3 {
-    font-size: 1rem;
-    color: var(--color-texto); /* Negro */
-}
-
-.product-card button {
-    background-color: var(--color-primario); /* Marrón claro */
-    color: var(--color-blanco); /* Blanco */
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.product-card button:hover {
-    background-color: var(--color-oscuro); /* Azul oscuro */
-}
-
-/* Pagination */
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.btn {
-    background-color: var(--color-primario); /* Marrón claro */
-    color: var(--color-blanco); /* Blanco */
-    border: none;
-    padding: 0.7rem 1.5rem;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--color-oscuro); /* Azul oscuro */
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--color-navbar); /* Azul oscuro */
-    color: var(--color-blanco); /* Blanco */
-    margin-top: 2rem;
-    font-family: 'Helvetica-Bold';
-}
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
